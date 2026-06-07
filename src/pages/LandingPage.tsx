@@ -44,9 +44,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
   const internalAction = (path: string) => onNavigate(path);
 
   const externalButtonClass =
-    `${buttonBase} bg-[var(--color-primary-blue)] text-white shadow-[0_18px_40px_rgba(47,111,237,0.26)] hover:translate-y-[-1px] hover:bg-[#2159d4]`;
+    `${buttonBase} min-h-14 px-8 py-4 text-base font-semibold bg-[var(--color-primary-blue)] text-white shadow-[0_22px_48px_rgba(47,111,237,0.30)] hover:translate-y-[-1px] hover:bg-[#2159d4]`;
   const outlineButtonClass =
-    `${buttonBase} border border-[rgba(16,35,61,0.12)] bg-white text-[var(--color-foreground-dark)] hover:bg-[var(--color-soft-blue)]`;
+    `${buttonBase} min-h-12 border border-[rgba(16,35,61,0.12)] bg-white px-6 py-3 text-sm text-[var(--color-foreground-dark)] hover:bg-[var(--color-soft-blue)]`;
+  const finalCtaButtonClass =
+    `${buttonBase} min-h-16 px-9 py-4 text-base font-semibold bg-white text-[var(--color-deep-navy)] shadow-[0_20px_48px_rgba(12,29,51,0.24)] hover:bg-[var(--color-primary-blue-soft)]`;
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(47,111,237,0.14),_transparent_36%),linear-gradient(180deg,#f7fbff_0%,#ffffff_22%,#f5f8fc_100%)] text-[var(--color-foreground-dark)]">
@@ -145,7 +147,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                 {content.hero.subheadline}
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={externalButtonClass}>
                   {content.hero.ctaPrimary}
                   <ArrowRight className="h-4 w-4" />
@@ -155,7 +157,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                 </a>
               </div>
 
-              <p className="mt-4 text-sm text-[var(--color-muted-body)]">{content.hero.microcopy}</p>
+              <p className="mt-4 text-sm font-medium text-[var(--color-muted-body)]">{content.hero.microcopy}</p>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {content.credibility.items.map((item) => (
@@ -482,7 +484,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                     </div>
                   </div>
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                    <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={`${buttonBase} bg-white text-[var(--color-deep-navy)] hover:bg-[var(--color-primary-blue-soft)]`}>
+                    <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={finalCtaButtonClass}>
                       {content.finalCta.ctaLabel}
                       <ArrowRight className="h-4 w-4" />
                     </button>
