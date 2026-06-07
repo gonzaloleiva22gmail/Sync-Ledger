@@ -5,121 +5,145 @@ export const en: PageContent = {
     name: 'Sync Ledger',
   },
   announcementBar:
-    'Is your team losing time to repetitive work? Discover what you can automate first, free of charge.',
+    'Practical automation audits for owner-led teams that want to save time without adding complexity.',
+  credibility: {
+    items: ['Owner-led conversations', '45 to 60 minute audit', 'Free action plan'],
+    note: 'Built for small and mid-sized businesses that need clearer follow-up, cleaner handoffs, and less manual admin.',
+  },
   hero: {
-    badge: 'AI Automation Audit · Sync Ledger',
-    headline: 'DISCOVER WHICH PART OF YOUR BUSINESS YOU SHOULD AUTOMATE FIRST',
+    badge: 'AI automation audit · Sync Ledger',
+    headline: 'Find the first process worth automating',
     subheadline:
-      'Book a free 45-60 minute AI audit with Sync Ledger to identify where your team is losing time, which processes repeat too often, and what the most useful first automation would be for your business.',
-    ctaPrimary: 'Book my free audit',
+      'Book a free 45 to 60 minute audit to pinpoint where your team is losing time, where follow-up breaks down, and what simple automation would make the biggest difference first.',
+    ctaPrimary: 'Book a free audit',
     ctaSecondary: 'See what we review',
-    microcopy: 'No cost · No obligation · 45-60 minutes · Initial action plan included',
+    microcopy: 'No cost, no obligation, and you leave with a clear next step.',
+  },
+  deliverables: {
+    eyebrow: 'What you leave with',
+    heading: 'A practical output, not a vague conversation',
+    subheading:
+      'The call produces a short, usable direction sheet that helps you decide what to fix first.',
+    items: [
+      {
+        title: 'A simple gap map',
+        desc: 'Where time is leaking, which steps are manual, and where handoffs are slowing things down.',
+      },
+      {
+        title: 'A prioritised automation list',
+        desc: 'Which workflow to automate first, what can wait, and what is not worth touching yet.',
+      },
+      {
+        title: 'A realistic next-step plan',
+        desc: 'What to test, what to prepare internally, and what a low-friction implementation would look like.',
+      },
+    ],
   },
   pain: {
     heading: 'Does this sound familiar?',
-    subheading: 'These are common problems we see before an automation audit.',
+    subheading: 'These are the patterns we usually hear before a business books an audit.',
     items: [
-      '"My team spends hours on manual tasks that could be automated."',
-      '"We use many tools, but they are not connected to each other."',
-      '"We know AI matters, but we do not know where to start."',
-      '"Information gets lost between departments, chats, emails, or documents."',
-      '"We depend too much on key people for operational tasks."',
-      '"We invested in technology, but we still work manually."',
+      '"My team spends too much time on manual follow-up."',
+      '"Leads come in, but the next step is not always clear."',
+      '"We use several tools, but the process still feels stitched together."',
+      '"Information gets lost between email, chat, and documents."',
+      '"A few people know the process, so the business depends on them too much."',
+      '"We have software, but the actual workflow is still manual."',
     ],
     footnote:
-      'If any of this sounds familiar, there is probably a clear automation opportunity worth exploring.',
+      'If several of these feel familiar, there is probably a practical place to start.',
   },
   whatWeReview: {
-    eyebrow: 'What we do together',
-    heading: 'IN THE AUDIT',
-    headingHighlight: 'WE REVIEW:',
+    eyebrow: 'What we review together',
+    heading: 'In the audit, we review',
+    headingHighlight: 'the parts that slow the business down',
     cards: [
       {
         name: 'REPETITIVE TASKS',
         description:
-          'What your team does every week that consumes time and follows a clear pattern.',
+          'The weekly tasks your team repeats, especially the ones that are predictable and time-consuming.',
       },
       {
         name: 'CURRENT TOOLS',
         description:
-          'What systems your business already uses today: WhatsApp, CRM, email, spreadsheets, calendars, documents, accounting apps, ERP, or internal tools.',
+          'The systems already in play, like email, WhatsApp, CRM, spreadsheets, calendars, and accounting tools.',
       },
       {
         name: 'TIME AND INFORMATION LOSS',
         description:
-          'Where follow-up gets lost, information gets trapped, or processes slow down because they depend on manual work.',
+          'Where follow-up drops off, information gets trapped, or teams have to chase context manually.',
       },
       {
         name: 'THE FIRST RECOMMENDED AUTOMATION',
         description:
-          'Which automation makes the most sense to implement first and what the next practical steps would be.',
+          'The first automation worth testing, and the practical steps to move toward it without overbuilding.',
       },
     ],
   },
   howItWorks: {
-    heading: 'THIS IS HOW IT',
-    headingHighlight: 'WORKS...',
+    heading: 'How it works',
+    headingHighlight: '',
     steps: [
       {
         step: '01',
-        title: 'WE MEET FOR 45-60 MINUTES',
-        desc: 'A structured business conversation to review your company, your team, and your current processes. No technical jargon.',
+        title: 'We map the current workflow',
+        desc: 'We talk through how work moves today, where delays happen, and who is doing what manually.',
       },
       {
         step: '02',
-        title: 'WE IDENTIFY THE OPPORTUNITIES',
-        desc: 'We pinpoint where AI can save time, improve follow-up, or reduce manual work.',
+        title: 'We spot the easiest win',
+        desc: 'We identify the first workflow that can save time without disrupting the way the team already works.',
       },
       {
         step: '03',
-        title: 'YOU RECEIVE AN INITIAL PLAN',
-        desc: 'A clear diagnosis, one concrete recommendation, and the first steps to implement AI in a practical way.',
+        title: 'You receive a short action plan',
+        desc: 'You leave with a practical recommendation, the likely effort, and the next step to take.',
       },
     ],
-    ctaLabel: 'BOOK MY FREE AUDIT',
+    ctaLabel: 'Book the audit',
   },
   opportunities: {
     heading: 'Examples of automations',
     headingHighlight: 'we may uncover',
     items: [
-      { name: 'WhatsApp sales and support' },
-      { name: 'Sales follow-up and CRM workflows' },
-      { name: 'Marketing and content operations' },
-      { name: 'Admin and back-office processes' },
-      { name: 'Accounting, documents, or reporting' },
+      { name: 'Lead intake and first response' },
+      { name: 'Follow-up and CRM updates' },
+      { name: 'Quote and proposal handoff' },
+      { name: 'Admin and document routing' },
+      { name: 'Reporting and internal reminders' },
     ],
   },
   faq: {
     heading: 'FREQUENTLY ASKED QUESTIONS',
-    subheading: 'A simple session to understand where to start with AI in a practical way.',
+    subheading: 'A simple session to understand where to start in a practical way.',
     items: [
       {
         title: 'Is it really free?',
-        desc: 'Yes. The audit is free and comes with no obligation to buy anything. The goal is to leave you with clarity on what could be automated and what the next steps should be.',
+        desc: 'Yes. The audit is free and comes with no obligation. The goal is clarity, not a hard sell.',
       },
       {
         title: 'What kind of business is this for?',
-        desc: 'It is ideal for growing small and mid-sized businesses that already have repetitive processes, an operating team, and tools such as WhatsApp, CRM, email, spreadsheets, calendars, documents, or accounting systems.',
+        desc: 'It is ideal for small and mid-sized businesses with repetitive work, active follow-up, and a few tools that do not quite connect cleanly.',
       },
       {
         title: 'Do I need to understand technology?',
-        desc: 'No. The audit is held in business language. We talk about processes, time, follow-up, customers, and improvement opportunities, not technical terminology.',
+        desc: 'No. We keep the conversation in business language and talk about process, time, follow-up, and customer handoff.',
       },
       {
         title: 'What happens after the audit?',
-        desc: 'You receive an initial diagnosis and recommendation. If we find a clear opportunity and you want to move forward, we can discuss a possible implementation.',
+        desc: 'You receive a short recommendation and, if there is a good fit, a practical path to implementation.',
       },
     ],
   },
   finalCta: {
-    heading: 'Leave with clarity on your first useful automation',
-    body: 'By the end, you will have a simple diagnosis, one concrete recommendation, and a practical next-step plan for using AI inside your business.',
-    ctaLabel: 'Book my free audit',
-    footnote: 'Available for businesses met at the event · No obligation to continue',
+    heading: 'Leave with one clear next step',
+    body: 'By the end, you will know what to automate first, what to leave alone, and how to move forward without adding noise to the business.',
+    ctaLabel: 'Book a free audit',
+    footnote: 'A simple first step to get clarity before you invest in any implementation.',
   },
   footer: {
     description:
-      'We help businesses identify and automate repetitive work with AI in a practical, low-friction way.',
+      'We help owner-led businesses find the first practical automation opportunity, then turn it into a simple next step.',
     contactLabel: 'Contact',
     legalLabel: 'Legal',
     copyright: '© 2026 Sync Ledger. All rights reserved.',

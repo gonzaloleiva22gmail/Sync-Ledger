@@ -3,6 +3,10 @@ export interface PageContent {
     name: string;
   };
   announcementBar: string;
+  credibility: {
+    items: string[];
+    note: string;
+  };
   hero: {
     badge: string;
     headline: string;
@@ -10,6 +14,15 @@ export interface PageContent {
     ctaPrimary: string;
     ctaSecondary: string;
     microcopy: string;
+  };
+  deliverables: {
+    eyebrow: string;
+    heading: string;
+    subheading: string;
+    items: {
+      title: string;
+      desc: string;
+    }[];
   };
   pain: {
     heading: string;

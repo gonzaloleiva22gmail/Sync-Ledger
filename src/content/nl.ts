@@ -5,121 +5,145 @@ export const nl: PageContent = {
     name: 'Sync Ledger',
   },
   announcementBar:
-    'Verliest je team tijd aan repetitief werk? Ontdek gratis wat je als eerste kunt automatiseren.',
+    'Praktische automatiseringsaudits voor teams die tijd willen besparen zonder extra complexiteit.',
+  credibility: {
+    items: ['Gesprek met de partner', 'Audit van 45 tot 60 minuten', 'Gratis actieplan'],
+    note: 'Geschikt voor kleine en middelgrote bedrijven die duidelijkere opvolging, soepelere overdrachten en minder handmatig werk willen.',
+  },
   hero: {
-    badge: 'AI Automatiseringsaudit · Sync Ledger',
-    headline: 'ONTDEK WELK DEEL VAN JE BEDRIJF JE HET BESTE ALS EERSTE KUNT AUTOMATISEREN',
+    badge: 'AI-automatiseringsaudit · Sync Ledger',
+    headline: 'Vind het eerste proces dat je kunt automatiseren',
     subheadline:
-      'Plan een gratis AI-audit van 45-60 minuten met Sync Ledger om te zien waar je team tijd verliest, welke processen zich te vaak herhalen en welke eerste automatisering het meest nuttig zou zijn voor je bedrijf.',
-    ctaPrimary: 'Plan mijn gratis audit',
+      'Plan een gratis audit van 45 tot 60 minuten om te zien waar je team tijd verliest, waar opvolging hapert en welke eenvoudige automatisering als eerste het meeste oplevert.',
+    ctaPrimary: 'Plan een gratis audit',
     ctaSecondary: 'Bekijk wat we analyseren',
-    microcopy: 'Gratis · Vrijblijvend · 45-60 minuten · Inclusief eerste actieplan',
+    microcopy: 'Gratis, vrijblijvend en je vertrekt met een duidelijke volgende stap.',
+  },
+  deliverables: {
+    eyebrow: 'Wat je meeneemt',
+    heading: 'Een praktisch resultaat, geen vaag gesprek',
+    subheading:
+      'Het gesprek levert een korte, bruikbare richting op waarmee je kunt bepalen wat eerst moet veranderen.',
+    items: [
+      {
+        title: 'Een simpele gap-analyse',
+        desc: 'Waar tijd weglekt, welke stappen handmatig zijn en waar overdrachten vertragen.',
+      },
+      {
+        title: 'Een geprioriteerde automatiseringslijst',
+        desc: 'Welke workflow je als eerste automatiseert, wat kan wachten en wat nog niet de moeite waard is.',
+      },
+      {
+        title: 'Een realistisch vervolgstappenplan',
+        desc: 'Wat je moet testen, wat intern klaar moet staan en hoe een lage-frictie implementatie eruitziet.',
+      },
+    ],
   },
   pain: {
     heading: 'Komt dit je bekend voor?',
-    subheading: 'Dit zijn veelvoorkomende problemen die we zien voor een automatiseringsaudit.',
+    subheading: 'Dit zijn de signalen die we vaak horen vóór een bedrijf een audit boekt.',
     items: [
-      '"Mijn team besteedt uren aan handmatig werk dat geautomatiseerd kan worden."',
-      '"We gebruiken veel tools, maar ze zijn niet met elkaar verbonden."',
-      '"We weten dat AI belangrijk is, maar niet waar we moeten beginnen."',
-      '"Informatie gaat verloren tussen afdelingen, chats, e-mails of documenten."',
-      '"We zijn te afhankelijk van sleutelpersonen voor operationele taken."',
-      '"We hebben in technologie geïnvesteerd, maar werken nog steeds handmatig."',
+      '"Mijn team besteedt te veel tijd aan handmatige opvolging."',
+      '"Leads komen binnen, maar de volgende stap is niet altijd duidelijk."',
+      '"We gebruiken meerdere tools, maar het proces voelt nog steeds aan elkaar geplakt."',
+      '"Informatie gaat verloren tussen e-mail, chat en documenten."',
+      '"Een paar mensen kennen het proces, dus het bedrijf hangt te veel van hen af."',
+      '"We hebben software, maar de workflow is nog steeds grotendeels handmatig."',
     ],
     footnote:
-      'Als dit herkenbaar klinkt, is er waarschijnlijk een concrete automatiseringskans die het waard is om te onderzoeken.',
+      'Als meerdere punten herkenbaar zijn, is er waarschijnlijk een praktische plek om te beginnen.',
   },
   whatWeReview: {
-    eyebrow: 'Wat we samen doen',
-    heading: 'TIJDENS DE AUDIT',
-    headingHighlight: 'BEKIJKEN WE:',
+    eyebrow: 'Wat we samen bekijken',
+    heading: 'Tijdens de audit bekijken we',
+    headingHighlight: 'welke delen het bedrijf vertragen',
     cards: [
       {
         name: 'REPETITIEVE TAKEN',
         description:
-          'Welke taken je team elke week uitvoert die veel tijd kosten en een duidelijk patroon volgen.',
+          'De wekelijkse taken die je team herhaalt, vooral de voorspelbare en tijdrovende stappen.',
       },
       {
         name: 'HUIDIGE TOOLS',
         description:
-          'Welke systemen je bedrijf nu gebruikt: WhatsApp, CRM, e-mail, spreadsheets, agenda’s, documenten, boekhoudapps, ERP of interne tools.',
+          'De systemen die al draaien, zoals e-mail, WhatsApp, CRM, spreadsheets, agenda’s en boekhouding.',
       },
       {
         name: 'VERLIES VAN TIJD EN INFORMATIE',
         description:
-          'Waar opvolging verloren gaat, informatie vastloopt of processen vertragen doordat ze afhankelijk zijn van handmatig werk.',
+          'Waar opvolging stilvalt, informatie vastloopt of teams handmatig context moeten achterhalen.',
       },
       {
         name: 'DE EERSTE AANBEVOLEN AUTOMATISERING',
         description:
-          'Welke automatisering het meest logisch is om als eerste te implementeren en wat de volgende praktische stappen zijn.',
+          'Welke automatisering je als eerste moet testen en hoe je dat praktisch aanpakt zonder overbouw.',
       },
     ],
   },
   howItWorks: {
-    heading: 'ZO',
-    headingHighlight: 'WERKT HET...',
+    heading: 'Hoe het werkt',
+    headingHighlight: '',
     steps: [
       {
         step: '01',
-        title: 'WE SPREKEN 45-60 MINUTEN',
-        desc: 'Een gestructureerd zakelijk gesprek waarin we je bedrijf, team en huidige processen doornemen. Zonder technisch jargon.',
+        title: 'We brengen de huidige workflow in kaart',
+        desc: 'We praten door hoe het werk nu loopt, waar vertraging ontstaat en wat nog handmatig gebeurt.',
       },
       {
         step: '02',
-        title: 'WE VINDEN DE KANSEN',
-        desc: 'We brengen in kaart waar AI tijd kan besparen, opvolging kan verbeteren of handmatig werk kan verminderen.',
+        title: 'We vinden de snelste winst',
+        desc: 'We bepalen welke workflow als eerste tijd kan besparen zonder het team te verstoren.',
       },
       {
         step: '03',
-        title: 'JE KRIJGT EEN EERSTE PLAN',
-        desc: 'Een duidelijke diagnose, één concrete aanbeveling en de eerste stappen om AI praktisch toe te passen.',
+        title: 'Je krijgt een kort actieplan',
+        desc: 'Je vertrekt met een praktische aanbeveling, de vermoedelijke inspanning en de eerstvolgende stap.',
       },
     ],
-    ctaLabel: 'PLAN MIJN GRATIS AUDIT',
+    ctaLabel: 'Plan de audit',
   },
   opportunities: {
     heading: 'Voorbeelden van automatiseringen',
     headingHighlight: 'die we kunnen ontdekken',
     items: [
-      { name: 'WhatsApp voor sales en support' },
-      { name: 'Salesopvolging en CRM-workflows' },
-      { name: 'Marketing en contentprocessen' },
-      { name: 'Administratie en backoffice' },
-      { name: 'Boekhouding, documenten of rapportages' },
+      { name: 'Lead intake en eerste reactie' },
+      { name: 'Opvolging en CRM-updates' },
+      { name: 'Offerte- en voorsteloverdracht' },
+      { name: 'Administratie en documentrouting' },
+      { name: 'Rapportage en interne reminders' },
     ],
   },
   faq: {
     heading: 'VEELGESTELDE VRAGEN',
-    subheading: 'Een eenvoudige sessie om praktisch te bepalen waar je met AI kunt beginnen.',
+    subheading: 'Een eenvoudige sessie om praktisch te bepalen waar je moet beginnen.',
     items: [
       {
         title: 'Is het echt gratis?',
-        desc: 'Ja. De audit is gratis en volledig vrijblijvend. Het doel is dat je duidelijkheid krijgt over welke processen je kunt automatiseren en wat de volgende stappen zijn.',
+        desc: 'Ja. De audit is gratis en volledig vrijblijvend. Het doel is duidelijkheid, niet verkopen.',
       },
       {
         title: 'Voor welk type bedrijf is dit bedoeld?',
-        desc: 'Het is ideaal voor groeiende mkb-bedrijven met repetitieve processen, een operationeel team en tools zoals WhatsApp, CRM, e-mail, spreadsheets, agenda’s, documenten of boekhoudsystemen.',
+        desc: 'Het is ideaal voor kleine en middelgrote bedrijven met herhalend werk, actieve opvolging en een paar tools die niet helemaal goed op elkaar aansluiten.',
       },
       {
         title: 'Moet ik verstand hebben van technologie?',
-        desc: 'Nee. De audit gebeurt in zakelijke taal. We praten over processen, tijd, opvolging, klanten en verbeterkansen, niet over technische termen.',
+        desc: 'Nee. We houden het gesprek in zakelijke taal en praten over proces, tijd, opvolging en klantoverdracht.',
       },
       {
         title: 'Wat gebeurt er na de audit?',
-        desc: 'Je ontvangt een eerste diagnose en aanbeveling. Als we een duidelijke kans vinden en je wilt verder, kunnen we een mogelijke implementatie bespreken.',
+        desc: 'Je ontvangt een korte aanbeveling en, als het past, een praktisch pad naar implementatie.',
       },
     ],
   },
   finalCta: {
-    heading: 'Krijg helderheid over je eerste nuttige automatisering',
-    body: 'Na afloop heb je een eenvoudige diagnose, één concrete aanbeveling en een praktisch vervolgstappenplan om AI in je bedrijf te gebruiken.',
-    ctaLabel: 'Plan mijn gratis audit',
-    footnote: 'Beschikbaar voor bedrijven die op het event zijn gesproken · Geen verplichting om verder te gaan',
+    heading: 'Vertrek met één duidelijke volgende stap',
+    body: 'Aan het einde weet je wat je als eerste automatiseert, wat je laat liggen en hoe je verdergaat zonder ruis toe te voegen.',
+    ctaLabel: 'Plan een gratis audit',
+    footnote: 'Een eenvoudige eerste stap om duidelijkheid te krijgen vóór je ergens in investeert.',
   },
   footer: {
     description:
-      'We helpen bedrijven repetitief werk met AI te identificeren en te automatiseren, op een praktische en eenvoudige manier.',
+      'We helpen eigenaar-geleide bedrijven het eerste praktische automatiseringspunt te vinden en het om te zetten in een eenvoudige volgende stap.',
     contactLabel: 'Contact',
     legalLabel: 'Juridisch',
     copyright: '© 2026 Sync Ledger. Alle rechten voorbehouden.',

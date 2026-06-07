@@ -1,373 +1,548 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import {
-  Calculator,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Mail,
-  MessageSquare,
-  Phone,
-  Search,
-  Settings,
-  ShoppingCart,
-  TrendingUp,
-  Users,
-} from 'lucide-react';
-import { AnimatedGridPattern } from '@/components/ui/animated-grid-pattern';
-import { AnimatedShinyText } from '@/components/ui/animated-shiny-text';
-import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
-import { Button } from '@/components/ui/button';
-import { TypingAnimation } from '@/components/ui/typing-animation';
-import { PageContent } from '@/content/types';
-import { cn } from '@/lib/utils';
+import { ArrowRight, CheckCircle2, ChevronRight, Clock3, FileText, Mail, Phone, Sparkles, ShieldCheck, Star, Users } from 'lucide-react';
+import { type PageContent } from '../content/types';
 
-const reviewIcons = [Clock, Settings, Search, TrendingUp];
-const opportunityIcons = [
-  <MessageSquare key="message" />,
-  <Users key="users" />,
-  <TrendingUp key="trending" />,
-  <ShoppingCart key="cart" />,
-  <Calculator key="calculator" />,
-];
-
-interface LandingPageProps {
+type LandingPageProps = {
   content: PageContent;
   onNavigate: (path: string) => void;
-}
-
-const formatPhoneHref = (phone: string) => `tel:${phone.replace(/\s+/g, '')}`;
-const formatWhatsAppHref = (value: string) => {
-  const digits = value.replace(/\D+/g, '');
-  if (digits.length === 0) return value;
-  return `https://wa.me/${digits}`;
 };
 
+const buttonBase =
+  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-white';
+
+const sectionLabel =
+  'inline-flex items-center rounded-full border border-[rgba(16,35,61,0.1)] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)] shadow-[0_8px_20px_rgba(16,35,61,0.04)]';
+
+const SectionHeading = ({
+  eyebrow,
+  heading,
+  highlight,
+  subheading,
+  centered = false,
+}: {
+  eyebrow?: string;
+  heading: string;
+  highlight?: string;
+  subheading?: string;
+  centered?: boolean;
+}) => (
+  <div className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
+    {eyebrow ? <div className={sectionLabel}>{eyebrow}</div> : null}
+    <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[var(--color-foreground-dark)] md:text-4xl">
+      {heading} {highlight ? <span className="text-[var(--color-primary-blue)]">{highlight}</span> : null}
+    </h2>
+    {subheading ? (
+      <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)] md:text-lg">
+        {subheading}
+      </p>
+    ) : null}
+  </div>
+);
+
 const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
-  const reviewCards = content.whatWeReview.cards.map((card, index) => ({
-    Icon: reviewIcons[index],
-    name: card.name,
-    description: card.description,
-    href: '#',
-    cta: 'Learn more',
-    background: <div className="absolute inset-0 bg-gradient-to-br from-[#F4F2FF] to-white" />,
-    className: 'lg:col-span-1',
-  }));
+  const isDutch = window.location.pathname.startsWith('/nl');
+
+  const internalAction = (path: string) => onNavigate(path);
+
+  const externalButtonClass =
+    `${buttonBase} bg-[var(--color-primary-blue)] text-white shadow-[0_18px_40px_rgba(47,111,237,0.26)] hover:translate-y-[-1px] hover:bg-[#2159d4]`;
+  const outlineButtonClass =
+    `${buttonBase} border border-[rgba(16,35,61,0.12)] bg-white text-[var(--color-foreground-dark)] hover:bg-[var(--color-soft-blue)]`;
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="bg-[#1F144D] px-4 py-3 text-center text-sm font-medium text-white">
-        {content.announcementBar}
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(47,111,237,0.14),_transparent_36%),linear-gradient(180deg,#f7fbff_0%,#ffffff_22%,#f5f8fc_100%)] text-[var(--color-foreground-dark)]">
+      <div className="border-b border-[rgba(16,35,61,0.08)] bg-[var(--color-deep-navy)] text-white">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 text-sm md:px-6">
+          <p className="flex items-center gap-2 text-white/85">
+            <ShieldCheck className="h-4 w-4 text-[var(--color-primary-blue-soft)]" />
+            {content.announcementBar}
+          </p>
+          <div className="hidden items-center gap-2 md:flex">
+            <button
+              type="button"
+              onClick={() => internalAction(isDutch ? '/' : '/')}
+              className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] transition ${
+                !isDutch
+                  ? 'border-white/25 bg-white/10 text-white'
+                  : 'border-white/15 text-white/70 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => internalAction('/nl')}
+              className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] transition ${
+                isDutch
+                  ? 'border-white/25 bg-white/10 text-white'
+                  : 'border-white/15 text-white/70 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              NL
+            </button>
+          </div>
+        </div>
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-gray-100 bg-white">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex cursor-pointer items-center" onClick={() => onNavigate('/')}>
-            <img src="/logo.png" alt={content.brand.name} className="h-14 w-auto object-contain" />
-          </div>
-          <Button
-            asChild
-            className="rounded-full bg-[#8B82FE] px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#8B82FE]/20 hover:bg-[#8B82FE]/90"
+      <header className="sticky top-0 z-20 border-b border-[rgba(16,35,61,0.06)] bg-white/85 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+          <button
+            type="button"
+            onClick={() => internalAction('/')}
+            className="flex items-center gap-3 text-left"
           >
-            <a href={content.calendlyUrl} target="_blank" rel="noopener noreferrer">
-              {content.hero.ctaPrimary.toUpperCase()}
+            <img src="/logo.png" alt={content.brand.name} className="h-12 w-auto md:h-14" />
+            <div className="hidden sm:block">
+              <div className="text-sm font-semibold tracking-[0.08em] text-[var(--color-foreground-dark)]">
+                {content.brand.name}
+              </div>
+              <div className="text-xs text-[var(--color-muted-body)]">Automation audit for SMBs</div>
+            </div>
+          </button>
+
+          <nav className="hidden items-center gap-6 text-sm font-medium text-[var(--color-muted-body)] md:flex">
+            <a href="#deliverables" className="transition hover:text-[var(--color-primary-blue)]">
+              Deliverables
             </a>
-          </Button>
+            <a href="#review" className="transition hover:text-[var(--color-primary-blue)]">
+              Review
+            </a>
+            <a href="#process" className="transition hover:text-[var(--color-primary-blue)]">
+              Process
+            </a>
+            <a href="#faq" className="transition hover:text-[var(--color-primary-blue)]">
+              FAQ
+            </a>
+          </nav>
+
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            className="rounded-full bg-[var(--color-deep-navy)] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_30px_rgba(16,35,61,0.18)] transition hover:bg-[#0a1728]"
+          >
+            Contact
+          </button>
         </div>
       </header>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#F2EFFF] to-white py-20 md:py-32">
-        <AnimatedGridPattern
-          numSquares={30}
-          maxOpacity={0.1}
-          duration={3}
-          repeatDelay={1}
-          className={cn(
-            '[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]',
-            'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12',
-          )}
-        />
+      <main>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.7)_0%,rgba(255,255,255,0)_100%)]" />
+          <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-[rgba(47,111,237,0.12)] blur-3xl" />
+          <div className="absolute right-0 top-24 h-80 w-80 rounded-full bg-[rgba(16,35,61,0.08)] blur-3xl" />
 
-        <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <div className="mb-6 flex items-center justify-center">
-            <div className="group rounded-full border border-[#8B82FE]/20 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#8B82FE]/40 hover:bg-white">
-              <AnimatedShinyText className="text-xs font-bold uppercase tracking-[0.15em] text-[#8B82FE]">
+          <div className="relative mx-auto grid w-full max-w-7xl gap-16 px-4 py-16 md:px-6 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(47,111,237,0.16)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)] shadow-[0_18px_40px_rgba(16,35,61,0.08)]">
+                <Sparkles className="h-4 w-4" />
                 {content.hero.badge}
-              </AnimatedShinyText>
-            </div>
-          </div>
-
-          <TypingAnimation
-            as="h1"
-            duration={40}
-            className="mb-8 font-display text-5xl font-black leading-[1.05] text-[#0A0A2E] md:text-7xl"
-          >
-            {content.hero.headline}
-          </TypingAnimation>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-[#667085]"
-          >
-            {content.hero.subheadline}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.65 }}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="h-16 rounded-full bg-[#8B82FE] px-10 text-lg text-white shadow-xl shadow-[#8B82FE]/20 hover:bg-[#8B82FE]/90"
-            >
-              <a href={content.calendlyUrl} target="_blank" rel="noopener noreferrer">
-                {content.hero.ctaPrimary}
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => document.getElementById('what-we-review')?.scrollIntoView({ behavior: 'smooth' })}
-              className="h-16 rounded-full border-2 border-gray-200 px-10 text-lg text-[#0A0A2E] hover:bg-gray-50"
-            >
-              {content.hero.ctaSecondary} <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.75 }}
-            className="mt-6 text-sm text-gray-400"
-          >
-            {content.hero.microcopy}
-          </motion.p>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#402E99] via-[#1F144D] to-[#0D0826] py-24 text-white">
-        <div className="relative z-10 mx-auto max-w-4xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-display text-4xl font-black md:text-5xl">{content.pain.heading}</h2>
-            <p className="text-lg text-white/60">{content.pain.subheading}</p>
-          </div>
-          <div className="mb-12 grid gap-4 md:grid-cols-2">
-            {content.pain.items.map((pain) => (
-              <div
-                key={pain}
-                className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <span className="mt-0.5 flex-shrink-0 text-2xl leading-none font-black text-[#9C95FF]">×</span>
-                <p className="text-base font-medium italic leading-relaxed text-white/90">{pain}</p>
               </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-white/40">{content.pain.footnote}</p>
-        </div>
-      </section>
 
-      <section
-        id="what-we-review"
-        className="bg-[radial-gradient(ellipse_at_center,_#F4F2FF_0%,_#FFFFFF_70%)] py-20 md:py-32"
-      >
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-16 text-center">
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B82FE]">
-              {content.whatWeReview.eyebrow}
-            </span>
-            <h2 className="font-display text-4xl font-black text-[#0A0A2E] md:text-6xl">
-              {content.whatWeReview.heading}{' '}
-              <span className="bg-gradient-to-r from-[#8B82FE] to-[#9C95FF] bg-clip-text text-transparent">
-                {content.whatWeReview.headingHighlight}
-              </span>
-            </h2>
-          </div>
+              <h1 className="mt-6 text-4xl font-semibold tracking-[-0.05em] text-[var(--color-foreground-dark)] md:text-6xl md:leading-[1.02]">
+                {content.hero.headline}
+              </h1>
 
-          <BentoGrid className="auto-rows-[16rem] lg:grid-cols-2">
-            {reviewCards.map((feature) => (
-              <BentoCard key={feature.name} {...feature} />
-            ))}
-          </BentoGrid>
-        </div>
-      </section>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted-body)] md:text-xl">
+                {content.hero.subheadline}
+              </p>
 
-      <section className="bg-[#F4F2FF] py-20 md:py-32">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="mb-20 text-center font-display text-4xl font-black text-[#0A0A2E] md:text-6xl">
-            {content.howItWorks.heading}{' '}
-            <span className="bg-gradient-to-r from-[#8B82FE] to-[#9C95FF] bg-clip-text text-transparent">
-              {content.howItWorks.headingHighlight}
-            </span>
-          </h2>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {content.howItWorks.steps.map((item) => (
-              <div
-                key={item.step}
-                className="rounded-3xl border border-[#EBE8FF] bg-white p-10 text-center shadow-sm"
-              >
-                <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-[#8B82FE] text-3xl font-black text-white shadow-xl shadow-[#8B82FE]/20">
-                  {item.step}
-                </div>
-                <h3 className="mb-4 font-display text-xl font-bold text-[#0A0A2E]">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-[#667085]">{item.desc}</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={externalButtonClass}>
+                  {content.hero.ctaPrimary}
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <a href="#review" className={outlineButtonClass}>
+                  {content.hero.ctaSecondary}
+                </a>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-20 text-center">
-            <Button
-              asChild
-              size="lg"
-              className="h-16 rounded-full bg-[#8B82FE] px-12 text-lg font-bold text-white shadow-xl shadow-[#8B82FE]/20 hover:bg-[#8B82FE]/90"
-            >
-              <a href={content.calendlyUrl} target="_blank" rel="noopener noreferrer">
-                {content.howItWorks.ctaLabel}
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
+              <p className="mt-4 text-sm text-[var(--color-muted-body)]">{content.hero.microcopy}</p>
 
-      <section className="bg-white py-20 md:py-32">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="mb-16 text-center font-display text-4xl font-black text-[#0A0A2E] md:text-5xl">
-            {content.opportunities.heading}{' '}
-            <span className="bg-gradient-to-r from-[#8B82FE] to-[#9C95FF] bg-clip-text text-transparent">
-              {content.opportunities.headingHighlight}
-            </span>
-          </h2>
-
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
-            {content.opportunities.items.map((item, index) => (
-              <div key={item.name} className="group flex flex-col items-center text-center">
-                <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-[2rem] border border-[#EBE8FF] bg-[#F4F2FF] text-[#8B82FE] transition-all duration-500 ease-out group-hover:border-transparent group-hover:bg-[#8B82FE] group-hover:text-white group-hover:shadow-xl group-hover:shadow-[#8B82FE]/20">
-                  {React.cloneElement(opportunityIcons[index], { size: 32, strokeWidth: 1.5 })}
-                </div>
-                <span className="text-[13px] font-bold tracking-tight text-[#667085] transition-colors duration-300 group-hover:text-[#0A0A2E]">
-                  {item.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F4F2FF] py-20 md:py-32">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 font-display text-4xl font-black text-[#0A0A2E]">{content.faq.heading}</h2>
-            <p className="text-xl text-[#667085]">{content.faq.subheading}</p>
-          </div>
-
-          <div className="overflow-hidden rounded-3xl border border-[#EBE8FF] bg-white shadow-sm">
-            {content.faq.items.map((item) => (
-              <div
-                key={item.title}
-                className="flex items-center justify-between border-b border-gray-50 p-8 transition-colors last:border-0 hover:bg-[#F4F2FF]"
-              >
-                <div className="pr-8">
-                  <h4 className="mb-1 text-lg font-bold text-[#0A0A2E]">{item.title}</h4>
-                  <p className="text-sm leading-relaxed text-[#667085]">{item.desc}</p>
-                </div>
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#EBE8FF] text-[#8B82FE]">
-                  <CheckCircle2 size={20} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#402E99] via-[#1F144D] to-[#0D0826] py-32 text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-5">
-          <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-white blur-3xl" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-8 font-display text-4xl font-black leading-tight md:text-6xl">
-            {content.finalCta.heading}
-          </h2>
-          <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/70">
-            {content.finalCta.body}
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="min-h-[4rem] h-auto rounded-full bg-white px-6 py-4 text-center text-lg font-bold whitespace-normal text-[#8B82FE] shadow-2xl hover:bg-white/90 md:h-20 md:px-16 md:text-2xl"
-          >
-            <a href={content.calendlyUrl} target="_blank" rel="noopener noreferrer">
-              {content.finalCta.ctaLabel}
-            </a>
-          </Button>
-          <p className="mt-6 text-sm text-white/40">{content.finalCta.footnote}</p>
-        </div>
-      </section>
-
-      <footer className="border-t border-white/5 bg-[#1F144D] pb-12 pt-24 text-white">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-20 grid gap-12 md:grid-cols-3">
-            <div className="md:col-span-2">
-              <img src="/logo.png" alt={content.brand.name} className="mb-8 h-16 w-auto object-contain" />
-              <p className="max-w-sm text-base leading-relaxed text-white/60">{content.footer.description}</p>
-            </div>
-
-            <div>
-              <h5 className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
-                {content.footer.contactLabel}
-              </h5>
-              <ul className="space-y-6 text-white/80">
-                <li className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-[#8B82FE]">
-                    <Mail size={20} />
-                  </div>
-                  <a
-                    href={`mailto:${content.contact.email}`}
-                    className="font-medium transition-colors hover:text-[#8B82FE]"
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {content.credibility.items.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white/90 p-4 shadow-[0_18px_40px_rgba(16,35,61,0.06)]"
                   >
-                    {content.contact.email}
-                  </a>
-                </li>
-                <li className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-[#8B82FE]">
-                    <Phone size={20} />
-                  </div>
-                  <a
-                    href={formatPhoneHref(content.contact.phone)}
-                    className="font-medium transition-colors hover:text-[#8B82FE]"
-                  >
-                    {content.contact.phone}
-                  </a>
-                </li>
-                {content.contact.whatsapp ? (
-                  <li className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-[#8B82FE]">
-                      <MessageSquare size={20} />
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-[var(--color-primary-blue)]" />
+                      <p className="text-sm font-medium text-[var(--color-foreground-dark)]">{item}</p>
                     </div>
-                    <a
-                      href={formatWhatsAppHref(content.contact.whatsapp)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium transition-colors hover:text-[#8B82FE]"
-                    >
-                      {content.contact.whatsapp}
-                    </a>
-                  </li>
-                ) : null}
-              </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 max-w-2xl rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white px-5 py-4 text-sm leading-7 text-[var(--color-muted-body)] shadow-[0_18px_40px_rgba(16,35,61,0.06)]">
+                {content.credibility.note}
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 -z-10 rounded-[2rem] bg-[linear-gradient(180deg,rgba(16,35,61,0.96)_0%,rgba(16,35,61,0.9)_100%)] shadow-[0_30px_80px_rgba(16,35,61,0.18)]" />
+              <div className="absolute inset-x-6 top-6 h-24 rounded-full bg-[rgba(91,140,255,0.24)] blur-3xl" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 p-6 text-white md:p-8">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">Sample output</p>
+                    <h2 className="mt-3 text-2xl font-semibold tracking-[-0.04em]">A clearer view of where time is leaking</h2>
+                  </div>
+                  <div className="rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold text-white/75">
+                    45 to 60 min
+                  </div>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/10 bg-white/7 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white/85">
+                      <Users className="h-4 w-4 text-[var(--color-primary-blue-soft)]" />
+                      Common patterns
+                    </div>
+                    <ul className="mt-3 space-y-2 text-sm leading-6 text-white/72">
+                      <li>• Manual follow-up across email and chat</li>
+                      <li>• Context scattered between tools</li>
+                      <li>• Lead response depends on one or two people</li>
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-white/7 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white/85">
+                      <FileText className="h-4 w-4 text-[var(--color-primary-blue-soft)]" />
+                      What you leave with
+                    </div>
+                    <ul className="mt-3 space-y-2 text-sm leading-6 text-white/72">
+                      <li>• A practical gap map</li>
+                      <li>• One priority workflow to automate first</li>
+                      <li>• A realistic next-step plan</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03))] p-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-sm font-semibold text-white/70">Example audit summary</p>
+                    <div className="rounded-full bg-[var(--color-primary-blue)] px-3 py-1 text-xs font-semibold text-white">
+                      Highest impact first
+                    </div>
+                  </div>
+                  <div className="mt-4 grid gap-3 text-sm text-white/76 sm:grid-cols-3">
+                    <div className="rounded-2xl bg-white/6 p-4">
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/50">Workflow</p>
+                      <p className="mt-2 font-semibold">Lead intake</p>
+                    </div>
+                    <div className="rounded-2xl bg-white/6 p-4">
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/50">Issue</p>
+                      <p className="mt-2 font-semibold">Follow-up delay</p>
+                    </div>
+                    <div className="rounded-2xl bg-white/6 p-4">
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/50">Next step</p>
+                      <p className="mt-2 font-semibold">Auto-route and remind</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="border-t border-white/5 pt-12 text-center text-xs font-bold tracking-widest text-white/20">
-            {content.footer.copyright}
+        <section id="deliverables" className="section-padding">
+          <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-[0.95fr_1.05fr]">
+            <SectionHeading
+              eyebrow={content.deliverables.eyebrow}
+              heading={content.deliverables.heading}
+              subheading={content.deliverables.subheading}
+            />
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)] lg:col-span-1 lg:row-span-2">
+                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary-blue)]">
+                  <Clock3 className="h-4 w-4" />
+                  Audit output
+                </div>
+                <div className="mt-4 space-y-4">
+                  {content.deliverables.items.map((item, index) => (
+                    <div key={item.title} className={index === 0 ? 'rounded-2xl bg-[var(--color-soft-blue)] p-4' : 'rounded-2xl border border-[rgba(16,35,61,0.08)] p-4'}>
+                      <p className="text-sm font-semibold text-[var(--color-foreground-dark)]">{item.title}</p>
+                      <p className="mt-2 text-sm leading-6 text-[var(--color-muted-body)]">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(238,245,255,0.8))] p-6 shadow-[0_18px_40px_rgba(16,35,61,0.05)]">
+                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary-blue)]">
+                  <Star className="h-4 w-4" />
+                  Why it matters
+                </div>
+                <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)]">
+                  The aim is not to recommend a big transformation. It is to identify the first workflow that can be improved with the least disruption and the clearest payback.
+                </p>
+              </div>
+
+              <div className="rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]">
+                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary-blue)]">
+                  <ShieldCheck className="h-4 w-4" />
+                  Readable and practical
+                </div>
+                <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)]">
+                  You do not need to be technical. We keep the conversation in plain business language, with clear examples and no unnecessary jargon.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-padding">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <SectionHeading
+              eyebrow={content.pain.heading}
+              heading="What usually brings people in"
+              subheading={content.pain.subheading}
+              centered
+            />
+
+            <div className="mt-12 grid gap-4 lg:grid-cols-2">
+              {content.pain.items.map((item, index) => (
+                <div
+                  key={item}
+                  className={[
+                    'rounded-[1.5rem] border border-[rgba(16,35,61,0.08)] bg-white p-5 shadow-[0_18px_40px_rgba(16,35,61,0.05)]',
+                    index === 0 ? 'lg:col-span-2' : '',
+                  ].join(' ')}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--color-primary-blue)]" />
+                    <p className="text-base leading-7 text-[var(--color-foreground-dark)]">{item}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-[var(--color-muted-body)]">
+              {content.pain.footnote}
+            </p>
+          </div>
+        </section>
+
+        <section id="review" className="section-padding">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <SectionHeading
+              eyebrow={content.whatWeReview.eyebrow}
+              heading={content.whatWeReview.heading}
+              highlight={content.whatWeReview.headingHighlight}
+            />
+
+            <div className="mt-12 grid gap-5 lg:grid-cols-12">
+              {content.whatWeReview.cards.map((card, index) => (
+                <article
+                  key={card.name}
+                  className={[
+                    'rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]',
+                    index === 0 ? 'lg:col-span-7 lg:row-span-2 lg:min-h-[22rem]' : '',
+                    index === 1 ? 'lg:col-span-5' : '',
+                    index === 2 ? 'lg:col-span-5 lg:translate-y-2' : '',
+                    index === 3 ? 'lg:col-span-7 lg:translate-y-6' : '',
+                  ].join(' ')}
+                >
+                  <div className="flex h-full flex-col">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+                      <ChevronRight className="h-4 w-4" />
+                      {card.name}
+                    </div>
+                    <p className="mt-4 text-lg leading-8 text-[var(--color-foreground-dark)]">
+                      {card.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="process" className="section-padding">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <SectionHeading
+              eyebrow="How it works"
+              heading="A simple path to the first improvement"
+              subheading="We keep the process short, clear, and easy to act on."
+              centered
+            />
+
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {content.howItWorks.steps.map((step, index) => (
+                <div
+                  key={step.step}
+                  className={[
+                    'rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]',
+                    index === 1 ? 'lg:translate-y-4' : '',
+                    index === 2 ? 'lg:translate-y-8' : '',
+                  ].join(' ')}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+                      Step {step.step}
+                    </div>
+                    <div className="h-10 w-10 rounded-full bg-[var(--color-soft-blue)] text-center text-sm font-semibold leading-10 text-[var(--color-primary-blue)]">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.03em] text-[var(--color-foreground-dark)]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-7 text-[var(--color-muted-body)]">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={externalButtonClass}>
+                {content.howItWorks.ctaLabel}
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-padding">
+          <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <SectionHeading
+                eyebrow="Common starting points"
+                heading={content.opportunities.heading}
+                highlight={content.opportunities.headingHighlight}
+                subheading="These are common starting points for SMB teams that want the first useful automation, not a giant rebuild."
+              />
+            </div>
+            <div className="rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]">
+              <div className="grid gap-3 sm:grid-cols-2">
+                {content.opportunities.items.map((item) => (
+                  <div
+                    key={item.name}
+                    className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[var(--color-soft-blue)] px-4 py-4 text-sm font-semibold text-[var(--color-foreground-dark)]"
+                  >
+                    {item.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="section-padding">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <SectionHeading
+              eyebrow="FAQ"
+              heading={content.faq.heading}
+              subheading={content.faq.subheading}
+              centered
+            />
+
+            <div className="mx-auto mt-12 grid max-w-5xl gap-4">
+              {content.faq.items.map((item) => (
+                <details
+                  key={item.title}
+                  className="group rounded-[1.5rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.05)]"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold tracking-[-0.02em] text-[var(--color-foreground-dark)]">
+                    <span>{item.title}</span>
+                    <span className="rounded-full bg-[var(--color-soft-blue)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary-blue)] transition group-open:rotate-90">
+                      open
+                    </span>
+                  </summary>
+                  <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--color-muted-body)]">{item.desc}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section-padding">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <div className="overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,var(--color-deep-navy)_0%,#17345d_45%,#235dcf_100%)] px-6 py-10 text-white shadow-[0_30px_80px_rgba(16,35,61,0.22)] md:px-10 md:py-12">
+              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
+                    Free action plan
+                  </div>
+                  <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
+                    {content.finalCta.heading}
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-lg leading-8 text-white/78">
+                    {content.finalCta.body}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-white/12 bg-white/10 p-6 backdrop-blur">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-1 h-5 w-5 text-[var(--color-primary-blue-soft)]" />
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/70">Good fit for</p>
+                      <p className="mt-2 text-base leading-7 text-white/80">
+                        Owner-led teams that want a believable, practical path to better follow-up, smoother handoffs, and less admin.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                    <button type="button" onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')} className={`${buttonBase} bg-white text-[var(--color-deep-navy)] hover:bg-[var(--color-primary-blue-soft)]`}>
+                      {content.finalCta.ctaLabel}
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-white/65">{content.finalCta.footnote}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="contact" className="border-t border-[rgba(16,35,61,0.08)] bg-white">
+        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 md:px-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt={content.brand.name} className="h-11 w-auto" />
+              <div>
+                <p className="text-sm font-semibold tracking-[0.08em] text-[var(--color-foreground-dark)]">
+                  {content.brand.name}
+                </p>
+                <p className="text-xs text-[var(--color-muted-body)]">{content.footer.description}</p>
+              </div>
+            </div>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--color-muted-body)]">
+              {content.footer.description}
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <a
+              href={`mailto:${content.contact.email}`}
+              className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[var(--color-soft-blue)] p-4 transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_rgba(16,35,61,0.08)]"
+            >
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+                <Mail className="h-4 w-4" />
+                {content.footer.contactLabel}
+              </div>
+              <p className="mt-2 text-sm font-semibold text-[var(--color-foreground-dark)]">{content.contact.email}</p>
+            </a>
+            <a
+              href={`tel:${content.contact.phone}`}
+              className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_rgba(16,35,61,0.08)]"
+            >
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+                <Phone className="h-4 w-4" />
+                {content.footer.contactLabel}
+              </div>
+              <p className="mt-2 text-sm font-semibold text-[var(--color-foreground-dark)]">{content.contact.phone}</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="border-t border-[rgba(16,35,61,0.08)] bg-[rgba(16,35,61,0.02)]">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 text-xs text-[var(--color-muted-body)] md:flex-row md:items-center md:justify-between md:px-6">
+            <p>{content.footer.copyright}</p>
+            <p className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[var(--color-primary-blue)]" />
+              Built for SMB teams that want a practical first automation, not a giant transformation
+            </p>
           </div>
         </div>
       </footer>

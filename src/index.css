@@ -11,14 +11,15 @@
   --font-display: "Montserrat", sans-serif;
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
   --color-slate-900: #111827;
-  --color-primary-gradient: linear-gradient(to right, #4A90E2, #9013FE);
+  --color-primary-gradient: linear-gradient(to right, #2F6FED, #5B8CFF);
 
-  /* AI-Dutch design tokens */
-  --color-primary-indigo: #8B82FE;
-  --color-deep-navy: #1F144D;
-  --color-soft-lavender: #F4F2FF;
-  --color-foreground-dark: #0A0A2E;
-  --color-muted-body: #667085;
+  /* Blue corporate design tokens */
+  --color-primary-blue: #2F6FED;
+  --color-primary-blue-soft: #DCE9FF;
+  --color-deep-navy: #10233D;
+  --color-soft-blue: #EEF5FF;
+  --color-foreground-dark: #0C1D33;
+  --color-muted-body: #5E6D82;
 
   @keyframes shiny-text {
     0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
@@ -44,11 +45,11 @@
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4A90E2] to-[#9013FE];
+  color: #2F6FED;
 }
 
 .gradient-bg {
-  @apply bg-gradient-to-r from-[#4A90E2] to-[#9013FE];
+  background: #2F6FED;
 }
 
 .pill-button {
