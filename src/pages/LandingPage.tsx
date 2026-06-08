@@ -1,4 +1,23 @@
-import { ArrowRight, CheckCircle2, ChevronRight, Clock3, FileText, Mail, Phone, Sparkles, ShieldCheck, Star, Users } from 'lucide-react';
+import {
+  ArrowRight,
+  Calculator,
+  CheckCircle2,
+  ChevronRight,
+  Clock3,
+  FileText,
+  Mail,
+  MessageSquare,
+  Phone,
+  Search,
+  Settings,
+  ShieldCheck,
+  ShoppingCart,
+  Sparkles,
+  Star,
+  TrendingUp,
+  Users,
+  X,
+} from 'lucide-react';
 import { type PageContent } from '../content/types';
 
 type LandingPageProps = {
@@ -37,6 +56,9 @@ const SectionHeading = ({
     ) : null}
   </div>
 );
+
+const reviewIcons = [Clock3, Settings, Search, TrendingUp];
+const opportunityIcons = [MessageSquare, Users, TrendingUp, ShoppingCart, Calculator];
 
 const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
   const isDutch = window.location.pathname.startsWith('/nl');
@@ -292,32 +314,39 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section className="section-padding">
+        <section className="section-padding bg-[linear-gradient(180deg,#162a4a_0%,#13223b_100%)] text-white">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-            <SectionHeading
-              eyebrow={content.pain.heading}
-              heading="What usually brings people in"
-              subheading={content.pain.subheading}
-              centered
-            />
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue-soft)]">
+                {content.pain.heading}
+              </div>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-white md:text-5xl">
+                Does this sound familiar?
+              </h2>
+              <p className="mt-4 text-base leading-7 text-white/68 md:text-lg">
+                {content.pain.subheading}
+              </p>
+            </div>
 
             <div className="mt-12 grid gap-4 lg:grid-cols-2">
-              {content.pain.items.map((item, index) => (
+              {content.pain.items.map((item) => (
                 <div
                   key={item}
-                  className={[
-                    'rounded-[1.5rem] border border-[rgba(16,35,61,0.08)] bg-white p-5 shadow-[0_18px_40px_rgba(16,35,61,0.05)]',
-                    index === 0 ? 'lg:col-span-2' : '',
-                  ].join(' ')}
+                  className="rounded-[1.6rem] border border-white/10 bg-white/[0.05] px-6 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--color-primary-blue)]" />
-                    <p className="text-base leading-7 text-[var(--color-foreground-dark)]">{item}</p>
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/8 text-[var(--color-primary-blue-soft)]">
+                      <X className="h-4 w-4" />
+                    </div>
+                    <p className="text-lg font-semibold leading-8 text-white/92 italic">
+                      {item}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-[var(--color-muted-body)]">
+
+            <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-6 text-white/48">
               {content.pain.footnote}
             </p>
           </div>
@@ -325,70 +354,76 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
 
         <section id="review" className="section-padding">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-            <SectionHeading
-              eyebrow={content.whatWeReview.eyebrow}
-              heading={content.whatWeReview.heading}
-              highlight={content.whatWeReview.headingHighlight}
-            />
+            <div className="mx-auto max-w-3xl text-center">
+              <div className={sectionLabel}>{content.whatWeReview.eyebrow}</div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[var(--color-foreground-dark)] md:text-5xl">
+                {content.whatWeReview.heading}{' '}
+                <span className="text-[var(--color-primary-blue)]">{content.whatWeReview.headingHighlight}</span>
+              </h2>
+            </div>
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-12">
-              {content.whatWeReview.cards.map((card, index) => (
-                <article
-                  key={card.name}
-                  className={[
-                    'rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]',
-                    index === 0 ? 'lg:col-span-7 lg:row-span-2 lg:min-h-[22rem]' : '',
-                    index === 1 ? 'lg:col-span-5' : '',
-                    index === 2 ? 'lg:col-span-5 lg:translate-y-2' : '',
-                    index === 3 ? 'lg:col-span-7 lg:translate-y-6' : '',
-                  ].join(' ')}
-                >
-                  <div className="flex h-full flex-col">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
-                      <ChevronRight className="h-4 w-4" />
-                      {card.name}
+            <div className="mt-12 grid auto-rows-[17rem] gap-5 lg:grid-cols-2">
+              {content.whatWeReview.cards.map((card, index) => {
+                const Icon = reviewIcons[index];
+
+                return (
+                  <article
+                    key={card.name}
+                    className={[
+                      'group relative overflow-hidden rounded-[2rem] border border-[rgba(16,35,61,0.08)] bg-white p-7 shadow-[0_18px_40px_rgba(16,35,61,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(16,35,61,0.08)]',
+                      index === 0 ? 'lg:min-h-[23rem]' : '',
+                    ].join(' ')}
+                  >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(47,111,237,0.12),transparent_38%),linear-gradient(180deg,rgba(238,245,255,0.55),rgba(255,255,255,0))]" />
+                    <div className="relative flex h-full flex-col justify-between">
+                      <div>
+                        <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-[var(--color-soft-blue)] text-[var(--color-primary-blue)] transition duration-300 group-hover:bg-[var(--color-primary-blue)] group-hover:text-white">
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <div className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+                          <ChevronRight className="h-4 w-4" />
+                          Review area
+                        </div>
+                        <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em] text-[var(--color-foreground-dark)] md:text-2xl">
+                          {card.name}
+                        </h3>
+                      </div>
+                      <p className="mt-5 max-w-xl text-base leading-7 text-[var(--color-muted-body)]">
+                        {card.description}
+                      </p>
                     </div>
-                    <p className="mt-4 text-lg leading-8 text-[var(--color-foreground-dark)]">
-                      {card.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section id="process" className="section-padding">
+        <section id="process" className="section-padding bg-[var(--color-soft-blue)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-            <SectionHeading
-              eyebrow="How it works"
-              heading="A simple path to the first improvement"
-              subheading="We keep the process short, clear, and easy to act on."
-              centered
-            />
+            <div className="mx-auto max-w-3xl text-center">
+              <div className={sectionLabel}>How it works</div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[var(--color-foreground-dark)] md:text-5xl">
+                A simple path to the first improvement
+              </h2>
+              <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)] md:text-lg">
+                We keep the process short, clear, and easy to act on.
+              </p>
+            </div>
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              {content.howItWorks.steps.map((step, index) => (
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
+              {content.howItWorks.steps.map((step) => (
                 <div
                   key={step.step}
-                  className={[
-                    'rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]',
-                    index === 1 ? 'lg:translate-y-4' : '',
-                    index === 2 ? 'lg:translate-y-8' : '',
-                  ].join(' ')}
+                  className="rounded-[2rem] border border-[rgba(16,35,61,0.08)] bg-white p-8 text-center shadow-[0_18px_40px_rgba(16,35,61,0.06)]"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
-                      Step {step.step}
-                    </div>
-                    <div className="h-10 w-10 rounded-full bg-[var(--color-soft-blue)] text-center text-sm font-semibold leading-10 text-[var(--color-primary-blue)]">
-                      {index + 1}
-                    </div>
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-primary-blue)] text-2xl font-semibold text-white shadow-[0_18px_40px_rgba(47,111,237,0.28)]">
+                    {step.step}
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.03em] text-[var(--color-foreground-dark)]">
+                  <h3 className="mt-7 text-xl font-semibold tracking-[-0.03em] text-[var(--color-foreground-dark)]">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-base leading-7 text-[var(--color-muted-body)]">
+                  <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)]">
                     {step.desc}
                   </p>
                 </div>
@@ -405,53 +440,63 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
         </section>
 
         <section className="section-padding">
-          <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <SectionHeading
-                eyebrow="Common starting points"
-                heading={content.opportunities.heading}
-                highlight={content.opportunities.headingHighlight}
-                subheading="These are common starting points for SMB teams that want the first useful automation, not a giant rebuild."
-              />
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <div className={sectionLabel}>Common starting points</div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[var(--color-foreground-dark)] md:text-5xl">
+                {content.opportunities.heading}{' '}
+                <span className="text-[var(--color-primary-blue)]">{content.opportunities.headingHighlight}</span>
+              </h2>
+              <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)] md:text-lg">
+                These are common starting points for SMB teams that want the first useful automation, not a giant rebuild.
+              </p>
             </div>
-            <div className="rounded-[1.75rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.06)]">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {content.opportunities.items.map((item) => (
-                  <div
-                    key={item.name}
-                    className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[var(--color-soft-blue)] px-4 py-4 text-sm font-semibold text-[var(--color-foreground-dark)]"
-                  >
-                    {item.name}
+
+            <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
+              {content.opportunities.items.map((item, index) => {
+                const Icon = opportunityIcons[index];
+
+                return (
+                  <div key={item.name} className="group flex flex-col items-center text-center">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-[1.8rem] border border-[rgba(16,35,61,0.08)] bg-[var(--color-soft-blue)] text-[var(--color-primary-blue)] transition duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--color-primary-blue)] group-hover:text-white group-hover:shadow-[0_22px_44px_rgba(47,111,237,0.22)]">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <p className="mt-5 max-w-[11rem] text-sm font-semibold leading-6 text-[var(--color-foreground-dark)]">
+                      {item.name}
+                    </p>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section id="faq" className="section-padding">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-            <SectionHeading
-              eyebrow="FAQ"
-              heading={content.faq.heading}
-              subheading={content.faq.subheading}
-              centered
-            />
+        <section id="faq" className="section-padding bg-[var(--color-soft-blue)]">
+          <div className="mx-auto w-full max-w-5xl px-4 md:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <div className={sectionLabel}>FAQ</div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[var(--color-foreground-dark)] md:text-5xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-7 text-[var(--color-muted-body)] md:text-lg">
+                {content.faq.subheading}
+              </p>
+            </div>
 
-            <div className="mx-auto mt-12 grid max-w-5xl gap-4">
+            <div className="mt-12 overflow-hidden rounded-[2rem] border border-[rgba(16,35,61,0.08)] bg-white shadow-[0_18px_40px_rgba(16,35,61,0.06)]">
               {content.faq.items.map((item) => (
-                <details
+                <div
                   key={item.title}
-                  className="group rounded-[1.5rem] border border-[rgba(16,35,61,0.08)] bg-white p-6 shadow-[0_18px_40px_rgba(16,35,61,0.05)]"
+                  className="flex items-start justify-between gap-4 border-b border-[rgba(16,35,61,0.06)] p-6 last:border-b-0"
                 >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold tracking-[-0.02em] text-[var(--color-foreground-dark)]">
-                    <span>{item.title}</span>
-                    <span className="rounded-full bg-[var(--color-soft-blue)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary-blue)] transition group-open:rotate-90">
-                      open
-                    </span>
-                  </summary>
-                  <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--color-muted-body)]">{item.desc}</p>
-                </details>
+                  <div className="pr-4">
+                    <h3 className="text-lg font-semibold tracking-[-0.02em] text-[var(--color-foreground-dark)]">{item.title}</h3>
+                    <p className="mt-2 max-w-3xl text-base leading-7 text-[var(--color-muted-body)]">{item.desc}</p>
+                  </div>
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-soft-blue)] text-[var(--color-primary-blue)]">
+                    <CheckCircle2 className="h-5 w-5" />
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -497,19 +542,19 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
         </section>
       </main>
 
-      <footer id="contact" className="border-t border-[rgba(16,35,61,0.08)] bg-white">
-        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 md:px-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <footer id="contact" className="border-t border-white/8 bg-[var(--color-deep-navy)] text-white">
+        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 md:px-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt={content.brand.name} className="h-11 w-auto" />
               <div>
-                <p className="text-sm font-semibold tracking-[0.08em] text-[var(--color-foreground-dark)]">
+                <p className="text-sm font-semibold tracking-[0.08em] text-white">
                   {content.brand.name}
                 </p>
-                <p className="text-xs text-[var(--color-muted-body)]">{content.footer.description}</p>
+                <p className="text-xs text-white/55">Automation audit for SMBs</p>
               </div>
             </div>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--color-muted-body)]">
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">
               {content.footer.description}
             </p>
           </div>
@@ -517,32 +562,32 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           <div className="grid gap-4 sm:grid-cols-2">
             <a
               href={`mailto:${content.contact.email}`}
-              className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[var(--color-soft-blue)] p-4 transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_rgba(16,35,61,0.08)]"
+              className="rounded-2xl border border-white/10 bg-white/6 p-4 transition hover:-translate-y-0.5 hover:bg-white/10"
             >
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue-soft)]">
                 <Mail className="h-4 w-4" />
                 {content.footer.contactLabel}
               </div>
-              <p className="mt-2 text-sm font-semibold text-[var(--color-foreground-dark)]">{content.contact.email}</p>
+              <p className="mt-2 text-sm font-semibold text-white">{content.contact.email}</p>
             </a>
             <a
               href={`tel:${content.contact.phone}`}
-              className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_rgba(16,35,61,0.08)]"
+              className="rounded-2xl border border-white/10 bg-white/6 p-4 transition hover:-translate-y-0.5 hover:bg-white/10"
             >
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue)]">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-primary-blue-soft)]">
                 <Phone className="h-4 w-4" />
                 {content.footer.contactLabel}
               </div>
-              <p className="mt-2 text-sm font-semibold text-[var(--color-foreground-dark)]">{content.contact.phone}</p>
+              <p className="mt-2 text-sm font-semibold text-white">{content.contact.phone}</p>
             </a>
           </div>
         </div>
 
-        <div className="border-t border-[rgba(16,35,61,0.08)] bg-[rgba(16,35,61,0.02)]">
-          <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 text-xs text-[var(--color-muted-body)] md:flex-row md:items-center md:justify-between md:px-6">
+        <div className="border-t border-white/8 bg-[rgba(255,255,255,0.02)]">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 text-xs text-white/50 md:flex-row md:items-center md:justify-between md:px-6">
             <p>{content.footer.copyright}</p>
             <p className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[var(--color-primary-blue)]" />
+              <span className="h-2 w-2 rounded-full bg-[var(--color-primary-blue-soft)]" />
               Built for SMB teams that want a practical first automation, not a giant transformation
             </p>
           </div>
