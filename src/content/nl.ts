@@ -4,6 +4,12 @@ export const nl: PageContent = {
   brand: {
     name: 'Sync Ledger',
   },
+  nav: {
+    deliverables: 'Resultaat',
+    review: 'Analyse',
+    process: 'Proces',
+    faq: 'FAQ',
+  },
   announcementBar:
     'Praktische automatiseringsaudits voor teams die tijd willen besparen zonder extra complexiteit.',
   credibility: {
@@ -24,6 +30,12 @@ export const nl: PageContent = {
     heading: 'Een praktisch resultaat, geen vaag gesprek',
     subheading:
       'Het gesprek levert een korte, bruikbare richting op waarmee je kunt bepalen wat eerst moet veranderen.',
+    helperTitle: 'Waarom dit belangrijk is',
+    helperBody:
+      'Het doel is niet om een grote transformatie aan te raden. Het is om de eerste workflow te vinden die met zo min mogelijk verstoring en met de duidelijkste opbrengst kan worden verbeterd.',
+    plainTitle: 'Leesbaar en praktisch',
+    plainBody:
+      'Je hoeft niet technisch te zijn. We houden het gesprek in gewone zakelijke taal, met duidelijke voorbeelden en zonder onnodig jargon.',
     items: [
       {
         title: 'Een simpele gap-analyse',
@@ -40,8 +52,9 @@ export const nl: PageContent = {
     ],
   },
   pain: {
+    eyebrow: 'Veelvoorkomende knelpunten',
     heading: 'Komt dit je bekend voor?',
-    subheading: 'Dit zijn de signalen die we vaak horen vóór een bedrijf een audit boekt.',
+    subheading: 'Dit zijn de signalen die we vaak horen voor een bedrijf een audit boekt.',
     items: [
       '"Mijn team besteedt te veel tijd aan handmatige opvolging."',
       '"Leads komen binnen, maar de volgende stap is niet altijd duidelijk."',
@@ -66,7 +79,7 @@ export const nl: PageContent = {
       {
         name: 'HUIDIGE TOOLS',
         description:
-          'De systemen die al draaien, zoals e-mail, WhatsApp, CRM, spreadsheets, agenda’s en boekhouding.',
+          'De systemen die al draaien, zoals e-mail, WhatsApp, CRM, spreadsheets, agendas en boekhouding.',
       },
       {
         name: 'VERLIES VAN TIJD EN INFORMATIE',
@@ -81,8 +94,9 @@ export const nl: PageContent = {
     ],
   },
   howItWorks: {
-    heading: 'Hoe het werkt',
+    heading: 'Een eenvoudig pad naar de eerste verbetering',
     headingHighlight: '',
+    subheading: 'We houden het proces kort, helder en makkelijk om op te volgen.',
     steps: [
       {
         step: '01',
@@ -143,7 +157,7 @@ export const nl: PageContent = {
           },
           {
             name: 'Interne kennis',
-            desc: 'Directe toegang tot SOP’s, beleid en interne kennis op het moment dat teams die nodig hebben.',
+            desc: 'Directe toegang tot SOPs, beleid en interne kennis op het moment dat teams die nodig hebben.',
           },
         ],
       },
@@ -169,7 +183,7 @@ export const nl: PageContent = {
     ],
   },
   faq: {
-    heading: 'VEELGESTELDE VRAGEN',
+    heading: 'Veelgestelde vragen',
     subheading: 'Een eenvoudige sessie om praktisch te bepalen waar je moet beginnen.',
     items: [
       {
@@ -191,10 +205,14 @@ export const nl: PageContent = {
     ],
   },
   finalCta: {
-    heading: 'Vertrek met één duidelijke volgende stap',
+    eyebrow: 'Gratis actieplan',
+    heading: 'Vertrek met een duidelijke volgende stap',
     body: 'Aan het einde weet je wat je als eerste automatiseert, wat je laat liggen en hoe je verdergaat zonder ruis toe te voegen.',
+    fitLabel: 'Geschikt voor',
+    fitBody:
+      'Teams met een eigenaar of partner aan het roer die een geloofwaardig en praktisch pad willen naar betere opvolging, soepelere overdrachten en minder administratie.',
     ctaLabel: 'Plan een gratis audit',
-    footnote: 'Een eenvoudige eerste stap om duidelijkheid te krijgen vóór je ergens in investeert.',
+    footnote: 'Een eenvoudige eerste stap om duidelijkheid te krijgen voor je ergens in investeert.',
   },
   footer: {
     description:
@@ -202,6 +220,7 @@ export const nl: PageContent = {
     contactLabel: 'Contact',
     legalLabel: 'Juridisch',
     copyright: '© 2026 Sync Ledger. Alle rechten voorbehouden.',
+    tagline: 'Gebouwd voor MKB-teams die een praktische eerste automatisering willen, geen grote transformatie',
   },
   contact: {
     email: 'info@aceleraia.co',

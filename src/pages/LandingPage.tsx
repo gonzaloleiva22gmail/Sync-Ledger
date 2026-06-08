@@ -143,16 +143,16 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
 
           <nav className="hidden items-center gap-7 text-sm font-medium text-[var(--color-muted-body)] md:flex">
             <a href="#deliverables" className="transition hover:text-[var(--color-foreground-dark)]">
-              Deliverables
+              {content.nav.deliverables}
             </a>
             <a href="#review" className="transition hover:text-[var(--color-foreground-dark)]">
-              Review
+              {content.nav.review}
             </a>
             <a href="#process" className="transition hover:text-[var(--color-foreground-dark)]">
-              Process
+              {content.nav.process}
             </a>
             <a href="#faq" className="transition hover:text-[var(--color-foreground-dark)]">
-              FAQ
+              {content.nav.faq}
             </a>
           </nav>
 
@@ -221,10 +221,10 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               <div className="mt-8 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(135deg,rgba(47,111,237,0.08)_0%,rgba(255,255,255,0.92)_100%)] px-5 py-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-foreground-dark)]">
                   <Star className="h-4 w-4 text-[var(--color-primary-blue)]" />
-                  Why it matters
+                  {content.deliverables.helperTitle}
                 </div>
                 <p className="mt-3 text-sm leading-7 text-[var(--color-muted-body)]">
-                  The aim is not to recommend a big transformation. It is to identify the first workflow that can be improved with the least disruption and the clearest payback.
+                  {content.deliverables.helperBody}
                 </p>
               </div>
             </div>
@@ -250,10 +250,10 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               <div className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(135deg,rgba(255,255,255,1)_0%,rgba(243,247,253,0.92)_100%)] px-5 py-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-foreground-dark)]">
                   <ShieldCheck className="h-4 w-4 text-[var(--color-primary-blue)]" />
-                  Readable and practical
+                  {content.deliverables.plainTitle}
                 </div>
                 <p className="mt-3 text-sm leading-7 text-[var(--color-muted-body)]">
-                  You do not need to be technical. We keep the conversation in plain business language, with clear examples and no unnecessary jargon.
+                  {content.deliverables.plainBody}
                 </p>
               </div>
             </div>
@@ -264,10 +264,10 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary-blue-soft)]">
-                {content.pain.heading}
+                {content.pain.eyebrow}
               </p>
               <h2 className="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
-                Does this sound familiar?
+                {content.pain.heading}
               </h2>
               <p className="mt-4 text-base leading-7 text-white/68 md:text-lg">
                 {content.pain.subheading}
@@ -330,8 +330,8 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
         <section id="process" className="section-padding bg-[radial-gradient(circle_at_top_left,rgba(47,111,237,0.08),transparent_24%),linear-gradient(180deg,#eef4fd_0%,#f5f8fd_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className={sectionHeadingClass}>A simple path to the first improvement</h2>
-              <p className={`mt-4 ${bodyCopyClass}`}>We keep the process short, clear, and easy to act on.</p>
+              <h2 className={sectionHeadingClass}>{content.howItWorks.heading}</h2>
+              <p className={`mt-4 ${bodyCopyClass}`}>{content.howItWorks.subheading}</p>
             </div>
 
             <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -420,7 +420,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
         <section id="faq" className="section-padding bg-[radial-gradient(circle_at_top,rgba(47,111,237,0.06),transparent_22%),linear-gradient(180deg,#f1f6fd_0%,#eef4fb_100%)]">
           <div className="mx-auto w-full max-w-5xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className={sectionHeadingClass}>Frequently asked questions</h2>
+              <h2 className={sectionHeadingClass}>{content.faq.heading}</h2>
               <p className={`mt-4 ${bodyCopyClass}`}>{content.faq.subheading}</p>
             </div>
 
@@ -448,7 +448,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
             <div className="overflow-hidden rounded-3xl bg-[linear-gradient(135deg,var(--color-deep-navy)_0%,#17345d_48%,#2155c7_100%)] px-6 py-10 text-white md:px-10 md:py-12">
               <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/72">Free action plan</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/72">{content.finalCta.eyebrow}</p>
                   <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
                     {content.finalCta.heading}
                   </h2>
@@ -461,9 +461,9 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="mt-1 h-5 w-5 text-[var(--color-primary-blue-soft)]" />
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">Good fit for</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">{content.finalCta.fitLabel}</p>
                       <p className="mt-2 text-base leading-7 text-white/82">
-                        Owner-led teams that want a believable, practical path to better follow-up, smoother handoffs, and less admin.
+                        {content.finalCta.fitBody}
                       </p>
                     </div>
                   </div>
@@ -519,7 +519,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
             <p>{content.footer.copyright}</p>
             <p className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[var(--color-primary-blue-soft)]" />
-              Built for SMB teams that want a practical first automation, not a giant transformation
+              {content.footer.tagline}
             </p>
           </div>
         </div>

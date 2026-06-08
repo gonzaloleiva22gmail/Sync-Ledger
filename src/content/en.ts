@@ -4,6 +4,12 @@ export const en: PageContent = {
   brand: {
     name: 'Sync Ledger',
   },
+  nav: {
+    deliverables: 'Deliverables',
+    review: 'Review',
+    process: 'Process',
+    faq: 'FAQ',
+  },
   announcementBar:
     'Practical automation audits for owner-led teams that want to save time without adding complexity.',
   credibility: {
@@ -24,6 +30,12 @@ export const en: PageContent = {
     heading: 'A practical output, not a vague conversation',
     subheading:
       'The call produces a short, usable direction sheet that helps you decide what to fix first.',
+    helperTitle: 'Why it matters',
+    helperBody:
+      'The aim is not to recommend a big transformation. It is to identify the first workflow that can be improved with the least disruption and the clearest payback.',
+    plainTitle: 'Readable and practical',
+    plainBody:
+      'You do not need to be technical. We keep the conversation in plain business language, with clear examples and no unnecessary jargon.',
     items: [
       {
         title: 'A simple gap map',
@@ -40,6 +52,7 @@ export const en: PageContent = {
     ],
   },
   pain: {
+    eyebrow: 'Common friction points',
     heading: 'Does this sound familiar?',
     subheading: 'These are the patterns we usually hear before a business books an audit.',
     items: [
@@ -81,8 +94,9 @@ export const en: PageContent = {
     ],
   },
   howItWorks: {
-    heading: 'How it works',
+    heading: 'A simple path to the first improvement',
     headingHighlight: '',
+    subheading: 'We keep the process short, clear, and easy to act on.',
     steps: [
       {
         step: '01',
@@ -169,7 +183,7 @@ export const en: PageContent = {
     ],
   },
   faq: {
-    heading: 'FREQUENTLY ASKED QUESTIONS',
+    heading: 'Frequently asked questions',
     subheading: 'A simple session to understand where to start in a practical way.',
     items: [
       {
@@ -191,8 +205,12 @@ export const en: PageContent = {
     ],
   },
   finalCta: {
+    eyebrow: 'Free action plan',
     heading: 'Leave with one clear next step',
     body: 'By the end, you will know what to automate first, what to leave alone, and how to move forward without adding noise to the business.',
+    fitLabel: 'Good fit for',
+    fitBody:
+      'Owner-led teams that want a believable, practical path to better follow-up, smoother handoffs, and less admin.',
     ctaLabel: 'Book a free audit',
     footnote: 'A simple first step to get clarity before you invest in any implementation.',
   },
@@ -202,6 +220,7 @@ export const en: PageContent = {
     contactLabel: 'Contact',
     legalLabel: 'Legal',
     copyright: '© 2026 Sync Ledger. All rights reserved.',
+    tagline: 'Built for SMB teams that want a practical first automation, not a giant transformation',
   },
   contact: {
     email: 'info@aceleraia.co',

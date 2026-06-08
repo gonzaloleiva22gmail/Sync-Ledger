@@ -2,6 +2,12 @@ export interface PageContent {
   brand: {
     name: string;
   };
+  nav: {
+    deliverables: string;
+    review: string;
+    process: string;
+    faq: string;
+  };
   announcementBar: string;
   credibility: {
     items: string[];
@@ -19,12 +25,17 @@ export interface PageContent {
     eyebrow: string;
     heading: string;
     subheading: string;
+    helperTitle: string;
+    helperBody: string;
+    plainTitle: string;
+    plainBody: string;
     items: {
       title: string;
       desc: string;
     }[];
   };
   pain: {
+    eyebrow: string;
     heading: string;
     subheading: string;
     items: string[];
@@ -42,6 +53,7 @@ export interface PageContent {
   howItWorks: {
     heading: string;
     headingHighlight: string;
+    subheading: string;
     steps: {
       step: string;
       title: string;
@@ -73,8 +85,11 @@ export interface PageContent {
     }[];
   };
   finalCta: {
+    eyebrow: string;
     heading: string;
     body: string;
+    fitLabel: string;
+    fitBody: string;
     ctaLabel: string;
     footnote: string;
   };
@@ -83,6 +98,7 @@ export interface PageContent {
     contactLabel: string;
     legalLabel: string;
     copyright: string;
+    tagline: string;
   };
   contact: {
     email: string;
