@@ -23,11 +23,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
   const internalAction = (path: string) => onNavigate(path);
 
   const externalButtonClass =
-    `${buttonBase} min-h-14 px-8 py-4 text-base font-semibold bg-[var(--color-primary-blue)] text-white shadow-[0_20px_42px_rgba(47,111,237,0.22)] hover:translate-y-[-1px] hover:bg-[#245fdc]`;
+    `${buttonBase} min-h-16 px-10 py-4 text-lg font-semibold bg-[linear-gradient(135deg,#4b7cff_0%,#2f6fed_55%,#2155c7_100%)] text-white shadow-[0_24px_52px_rgba(47,111,237,0.26)] hover:translate-y-[-1px] hover:shadow-[0_28px_58px_rgba(47,111,237,0.32)]`;
   const outlineButtonClass =
-    `${buttonBase} min-h-12 border border-[rgba(16,35,61,0.14)] bg-white px-6 py-3 text-sm text-[var(--color-foreground-dark)] hover:bg-[rgba(47,111,237,0.05)]`;
+    `${buttonBase} min-h-14 border border-[rgba(16,35,61,0.14)] bg-white px-8 py-3 text-base text-[var(--color-foreground-dark)] hover:bg-[rgba(47,111,237,0.05)]`;
   const finalCtaButtonClass =
-    `${buttonBase} min-h-14 px-8 py-4 text-base font-semibold bg-white text-[var(--color-deep-navy)] shadow-[0_20px_40px_rgba(12,29,51,0.18)] hover:bg-[var(--color-primary-blue-soft)]`;
+    `${buttonBase} min-h-16 px-10 py-4 text-lg font-semibold bg-[linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)] text-white shadow-[0_24px_54px_rgba(47,111,237,0.28)] hover:translate-y-[-1px] hover:shadow-[0_28px_58px_rgba(47,111,237,0.34)]`;
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_24%,#f7f9fc_100%)] text-[var(--color-foreground-dark)]">
@@ -97,10 +97,10 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
 
           <button
             type="button"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-            className="rounded-full bg-[var(--color-deep-navy)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0a1728]"
+            onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
+            className="rounded-full bg-[linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_34px_rgba(47,111,237,0.22)] transition hover:translate-y-[-1px] hover:shadow-[0_22px_40px_rgba(47,111,237,0.28)]"
           >
-            Contact
+            {content.hero.ctaPrimary}
           </button>
         </div>
       </header>
@@ -300,7 +300,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               ))}
             </div>
 
-            <div className="mt-10 flex justify-center">
+            <div className="mt-12 flex justify-center">
               <button
                 type="button"
                 onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
