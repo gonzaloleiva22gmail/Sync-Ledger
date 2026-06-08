@@ -17,17 +17,63 @@ const sectionHeadingClass =
 
 const bodyCopyClass = 'text-base leading-7 text-[var(--color-muted-body)] md:text-lg';
 
+const InteractiveCtaButton = ({
+  label,
+  onClick,
+  className,
+  light = false,
+}: {
+  label: string;
+  onClick: () => void;
+  className?: string;
+  light?: boolean;
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={[
+      'group relative inline-flex items-center justify-center overflow-hidden rounded-full font-semibold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] focus-visible:ring-offset-2',
+      light
+        ? 'bg-white text-[var(--color-deep-navy)]'
+        : 'bg-[linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)] text-white',
+      className ?? '',
+    ].join(' ')}
+  >
+    <span
+      className={[
+        'absolute inset-0 transition duration-300 group-hover:scale-[1.03]',
+        light
+          ? 'bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(215,229,255,0.94)_100%)]'
+          : 'bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22),transparent_38%),linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)]',
+      ].join(' ')}
+    />
+    <span
+      className={[
+        'absolute left-4 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10 group-hover:translate-x-[-0.15rem]',
+        light ? 'bg-[rgba(47,111,237,0.14)]' : 'bg-white/22',
+      ].join(' ')}
+    />
+    <span className="relative flex items-center justify-center gap-2 overflow-hidden px-8 py-4">
+      <span className="transition-all duration-300 group-hover:-translate-x-3 group-hover:opacity-0">
+        {label}
+      </span>
+      <span className="absolute flex translate-x-8 items-center gap-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+        <span>{label}</span>
+        <ArrowRight className="h-4 w-4" />
+      </span>
+    </span>
+  </button>
+);
+
 const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
   const isDutch = window.location.pathname.startsWith('/nl');
 
   const internalAction = (path: string) => onNavigate(path);
 
-  const externalButtonClass =
-    `${buttonBase} min-h-16 px-10 py-4 text-lg font-semibold bg-[linear-gradient(135deg,#4b7cff_0%,#2f6fed_55%,#2155c7_100%)] text-white shadow-[0_24px_52px_rgba(47,111,237,0.26)] hover:translate-y-[-1px] hover:shadow-[0_28px_58px_rgba(47,111,237,0.32)]`;
+  const externalButtonClass = 'min-h-16 min-w-[18rem] text-lg shadow-[0_24px_52px_rgba(47,111,237,0.26)] hover:shadow-[0_28px_58px_rgba(47,111,237,0.32)]';
   const outlineButtonClass =
     `${buttonBase} min-h-14 border border-[rgba(16,35,61,0.14)] bg-white px-8 py-3 text-base text-[var(--color-foreground-dark)] hover:bg-[rgba(47,111,237,0.05)]`;
-  const finalCtaButtonClass =
-    `${buttonBase} min-h-16 px-10 py-4 text-lg font-semibold bg-[linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)] text-white shadow-[0_24px_54px_rgba(47,111,237,0.28)] hover:translate-y-[-1px] hover:shadow-[0_28px_58px_rgba(47,111,237,0.34)]`;
+  const finalCtaButtonClass = 'min-h-16 min-w-[18rem] text-lg shadow-[0_24px_54px_rgba(47,111,237,0.28)] hover:shadow-[0_28px_58px_rgba(47,111,237,0.34)]';
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_24%,#f7f9fc_100%)] text-[var(--color-foreground-dark)]">
@@ -95,13 +141,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
             </a>
           </nav>
 
-          <button
-            type="button"
+          <InteractiveCtaButton
+            label={content.hero.ctaPrimary}
             onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
-            className="rounded-full bg-[linear-gradient(135deg,#6a8fff_0%,#4b7cff_45%,#2f6fed_100%)] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_34px_rgba(47,111,237,0.22)] transition hover:translate-y-[-1px] hover:shadow-[0_22px_40px_rgba(47,111,237,0.28)]"
-          >
-            {content.hero.ctaPrimary}
-          </button>
+            className="min-h-12 min-w-[14rem] text-sm shadow-[0_18px_34px_rgba(47,111,237,0.22)] hover:shadow-[0_22px_40px_rgba(47,111,237,0.28)]"
+          />
         </div>
       </header>
 
@@ -124,14 +168,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  type="button"
+                <InteractiveCtaButton
+                  label={content.hero.ctaPrimary}
                   onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
                   className={externalButtonClass}
-                >
-                  {content.hero.ctaPrimary}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+                />
                 <a href="#deliverables" className={outlineButtonClass}>
                   {content.hero.ctaSecondary}
                 </a>
@@ -301,14 +342,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
             </div>
 
             <div className="mt-12 flex justify-center">
-              <button
-                type="button"
+              <InteractiveCtaButton
+                label={content.howItWorks.ctaLabel}
                 onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
                 className={externalButtonClass}
-              >
-                {content.howItWorks.ctaLabel}
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              />
             </div>
           </div>
         </section>
@@ -396,14 +434,11 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                   </div>
 
                   <div className="mt-6 flex flex-col gap-3">
-                    <button
-                      type="button"
+                    <InteractiveCtaButton
+                      label={content.finalCta.ctaLabel}
                       onClick={() => window.open(content.calendlyUrl, '_blank', 'noopener,noreferrer')}
                       className={finalCtaButtonClass}
-                    >
-                      {content.finalCta.ctaLabel}
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
+                    />
                   </div>
 
                   <p className="mt-4 text-sm leading-6 text-white/65">{content.finalCta.footnote}</p>
