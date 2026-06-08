@@ -103,14 +103,69 @@ export const nl: PageContent = {
     ctaLabel: 'Plan de audit',
   },
   opportunities: {
-    heading: 'Voorbeelden van automatiseringen',
-    headingHighlight: 'die we kunnen ontdekken',
-    items: [
-      { name: 'Lead intake en eerste reactie' },
-      { name: 'Opvolging en CRM-updates' },
-      { name: 'Offerte- en voorsteloverdracht' },
-      { name: 'Administratie en documentrouting' },
-      { name: 'Rapportage en interne reminders' },
+    eyebrow: 'Kerngebieden die we dekken',
+    heading: 'De automatiseringsgroepen',
+    headingHighlight: 'die we behandelen',
+    subheading:
+      'Dit zijn de hoofdgroepen die we in de audit kunnen beoordelen, van front-office opvolging en leadverwerking tot interne kennis, workflow-orkestratie en back-office processen.',
+    groups: [
+      {
+        title: 'Groei & Support',
+        label: 'Front-Office',
+        subtitle: 'Klantgerichte workflows, leadverwerking en doorlopende ondersteuning.',
+        items: [
+          {
+            name: 'Communicatie-agents',
+            desc: '24/7 intelligente reacties voor inkomende vragen, websitechat en eerste contactmomenten.',
+          },
+          {
+            name: 'Leadkwalificatie',
+            desc: 'Directe scoring, routering en eerste beslissingen voor nieuwe aanvragen.',
+          },
+          {
+            name: 'Leadreactivatie',
+            desc: 'Geautomatiseerde opvolging om slapende prospects en gemiste kansen opnieuw te activeren.',
+          },
+          {
+            name: 'Klantenservice',
+            desc: 'Afhandeling van repetitieve supportvragen voordat ze handmatige tickets worden.',
+          },
+        ],
+      },
+      {
+        title: 'Intelligentie & Creatie',
+        label: 'Middle-Office',
+        subtitle: 'Kennis, content en interne ondersteuning voor snellere uitvoering.',
+        items: [
+          {
+            name: 'Marketing & content',
+            desc: 'Schaalbare creatie, aanpassing en distributie van terugkerende content.',
+          },
+          {
+            name: 'Interne kennis',
+            desc: 'Directe toegang tot SOP’s, beleid en interne kennis op het moment dat teams die nodig hebben.',
+          },
+        ],
+      },
+      {
+        title: 'Data & Operaties',
+        label: 'Back-Office',
+        subtitle: 'Systeemoverdrachten, administratie en gestructureerde dataverwerking.',
+        items: [
+          {
+            name: 'Workflow-orkestratie',
+            desc: 'Systeem-naar-systeem overdrachten die handmatige schakels tussen tools en teams wegnemen.',
+          },
+          {
+            name: 'Operations & administratie',
+            desc: 'Planning, goedkeuringen en repetitieve administratie die met minder toezicht kunnen verlopen.',
+          },
+          {
+            name: 'Document- en dataverwerking',
+            desc: 'Intelligente extractie, structurering en routering van formulieren, bestanden en records.',
+          },
+        ],
+      },
     ],
   },
   faq: {

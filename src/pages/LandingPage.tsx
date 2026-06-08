@@ -17,6 +17,27 @@ const sectionHeadingClass =
 
 const bodyCopyClass = 'text-base leading-7 text-[var(--color-muted-body)] md:text-lg';
 
+const opportunityAccentStyles = [
+  {
+    shell:
+      'border-[rgba(195,133,56,0.16)] bg-[radial-gradient(circle_at_top_left,rgba(195,133,56,0.09),transparent_30%),linear-gradient(180deg,#ffffff_0%,#fcfaf6_100%)]',
+    pill: 'bg-[rgba(195,133,56,0.1)] text-[#9d6322]',
+    stripe: 'bg-[linear-gradient(90deg,#d9b072_0%,#c78f4c_100%)]',
+  },
+  {
+    shell:
+      'border-[rgba(47,111,237,0.14)] bg-[radial-gradient(circle_at_top_left,rgba(47,111,237,0.08),transparent_30%),linear-gradient(180deg,#ffffff_0%,#f7faff_100%)]',
+    pill: 'bg-[rgba(47,111,237,0.1)] text-[var(--color-primary-blue)]',
+    stripe: 'bg-[linear-gradient(90deg,#7ea5ff_0%,#2f6fed_100%)]',
+  },
+  {
+    shell:
+      'border-[rgba(53,131,106,0.16)] bg-[radial-gradient(circle_at_top_left,rgba(53,131,106,0.08),transparent_30%),linear-gradient(180deg,#ffffff_0%,#f7fcfa_100%)]',
+    pill: 'bg-[rgba(53,131,106,0.1)] text-[#2f7a67]',
+    stripe: 'bg-[linear-gradient(90deg,#8bc6b1_0%,#47937e_100%)]',
+  },
+] as const;
+
 const InteractiveCtaButton = ({
   label,
   onClick,
@@ -340,33 +361,58 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section className="section-padding bg-[radial-gradient(circle_at_bottom_right,rgba(47,111,237,0.05),transparent_24%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)]">
+        <section className="section-padding bg-[radial-gradient(circle_at_bottom_right,rgba(47,111,237,0.05),transparent_24%),radial-gradient(circle_at_top_left,rgba(16,35,61,0.04),transparent_20%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-            <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-              <div className="max-w-xl">
-                <p className={eyebrowClass}>Common starting points</p>
-                <h2 className={`mt-4 ${sectionHeadingClass}`}>
-                  {content.opportunities.heading}{' '}
-                  <span className="text-[var(--color-primary-blue)]">{content.opportunities.headingHighlight}</span>
-                </h2>
-                <p className={`mt-4 ${bodyCopyClass}`}>
-                  These are common starting points for SMB teams that want the first useful automation, not a giant rebuild.
-                </p>
-              </div>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className={eyebrowClass}>{content.opportunities.eyebrow}</p>
+              <h2 className={`mt-4 ${sectionHeadingClass}`}>
+                {content.opportunities.heading}{' '}
+                <span className="text-[var(--color-primary-blue)]">{content.opportunities.headingHighlight}</span>
+              </h2>
+              <p className={`mt-4 ${bodyCopyClass}`}>{content.opportunities.subheading}</p>
+            </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                {content.opportunities.items.map((item, index) => (
-                  <div
-                    key={item.name}
-                    className="flex items-start gap-4 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[radial-gradient(circle_at_top_right,rgba(47,111,237,0.05),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)] px-5 py-5"
+            <div className="mt-12 grid gap-6 xl:grid-cols-3">
+              {content.opportunities.groups.map((group, index) => {
+                const accent = opportunityAccentStyles[index] ?? opportunityAccentStyles[1];
+
+                return (
+                  <article
+                    key={group.title}
+                    className={`overflow-hidden rounded-[28px] border shadow-[0_16px_32px_rgba(16,35,61,0.05)] ${accent.shell}`}
                   >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(47,111,237,0.08)] text-sm font-semibold text-[var(--color-primary-blue)]">
-                      {index + 1}
+                    <div className={`h-1 w-full ${accent.stripe}`} />
+
+                    <div className="border-b border-[rgba(16,35,61,0.08)] px-6 pb-6 pt-6">
+                      <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${accent.pill}`}>
+                        {group.label}
+                      </span>
+                      <h3 className="mt-4 text-[1.85rem] font-semibold tracking-[-0.03em] text-[var(--color-foreground-dark)]">
+                        {group.title}
+                      </h3>
+                      <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--color-muted-body)]">
+                        {group.subtitle}
+                      </p>
                     </div>
-                    <p className="text-sm font-medium leading-6 text-[var(--color-foreground-dark)]">{item.name}</p>
-                  </div>
-                ))}
-              </div>
+
+                    <div className="space-y-3 p-4">
+                      {group.items.map((item) => (
+                        <div
+                          key={item.name}
+                          className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white/86 px-4 py-4 backdrop-blur-[2px]"
+                        >
+                          <p className="text-base font-semibold tracking-[-0.02em] text-[var(--color-foreground-dark)]">
+                            {item.name}
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-[var(--color-muted-body)]">
+                            {item.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>

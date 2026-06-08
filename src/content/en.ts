@@ -103,14 +103,69 @@ export const en: PageContent = {
     ctaLabel: 'Book the audit',
   },
   opportunities: {
-    heading: 'Examples of automations',
-    headingHighlight: 'we may uncover',
-    items: [
-      { name: 'Lead intake and first response' },
-      { name: 'Follow-up and CRM updates' },
-      { name: 'Quote and proposal handoff' },
-      { name: 'Admin and document routing' },
-      { name: 'Reporting and internal reminders' },
+    eyebrow: 'Core coverage areas',
+    heading: 'The automation groups',
+    headingHighlight: 'we cover',
+    subheading:
+      'These are the main categories we can assess in the audit, from front-office response and lead handling to internal knowledge, workflow orchestration, and back-office operations.',
+    groups: [
+      {
+        title: 'Growth & Support',
+        label: 'Front-Office',
+        subtitle: 'Customer-facing workflows, lead handling, and ongoing support.',
+        items: [
+          {
+            name: 'Communication agents',
+            desc: '24/7 intelligent response for inbound questions, website chat, and first contact.',
+          },
+          {
+            name: 'Lead qualification',
+            desc: 'Instant scoring, routing, and first-step decisioning for new enquiries.',
+          },
+          {
+            name: 'Lead reactivation',
+            desc: 'Automated follow-up to re-engage dormant prospects and missed opportunities.',
+          },
+          {
+            name: 'Customer support',
+            desc: 'Resolution of repetitive support requests before they become manual tickets.',
+          },
+        ],
+      },
+      {
+        title: 'Intelligence & Creation',
+        label: 'Middle-Office',
+        subtitle: 'Knowledge, content, and internal enablement for faster execution.',
+        items: [
+          {
+            name: 'Marketing & content',
+            desc: 'Scalable generation, adaptation, and distribution of recurring content.',
+          },
+          {
+            name: 'Internal knowledge',
+            desc: 'Instant access to SOPs, policies, and internal know-how when teams need it.',
+          },
+        ],
+      },
+      {
+        title: 'Data & Operations',
+        label: 'Back-Office',
+        subtitle: 'System handoffs, administration, and structured data processing.',
+        items: [
+          {
+            name: 'Workflow orchestration',
+            desc: 'System-to-system handoffs that remove manual relays between tools and teams.',
+          },
+          {
+            name: 'Ops & administration',
+            desc: 'Scheduling, approvals, and repetitive admin that can run with less supervision.',
+          },
+          {
+            name: 'Document & data processing',
+            desc: 'Intelligent extraction, structuring, and routing of forms, files, and records.',
+          },
+        ],
+      },
     ],
   },
   faq: {

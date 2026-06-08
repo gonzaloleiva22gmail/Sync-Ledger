@@ -50,10 +50,18 @@ export interface PageContent {
     ctaLabel: string;
   };
   opportunities: {
+    eyebrow: string;
     heading: string;
     headingHighlight: string;
-    items: {
-      name: string;
+    subheading: string;
+    groups: {
+      title: string;
+      label: string;
+      subtitle: string;
+      items: {
+        name: string;
+        desc: string;
+      }[];
     }[];
   };
   faq: {
