@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ChevronRight, Clock3, Mail, Phone, ShieldCheck, Sparkles, Star, X } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Clock3, Mail, Phone, ShieldCheck, Star, X } from 'lucide-react';
 import { type PageContent } from '../content/types';
 
 type LandingPageProps = {
@@ -118,12 +118,6 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
             className="flex items-center gap-3 text-left"
           >
             <img src="/logo.png" alt={content.brand.name} className="h-12 w-auto md:h-14" />
-            <div className="hidden sm:block">
-              <div className="text-sm font-semibold tracking-[0.06em] text-[var(--color-foreground-dark)]">
-                {content.brand.name}
-              </div>
-              <div className="text-xs text-[var(--color-muted-body)]">Automation audit for SMBs</div>
-            </div>
           </button>
 
           <nav className="hidden items-center gap-7 text-sm font-medium text-[var(--color-muted-body)] md:flex">
@@ -154,12 +148,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,111,237,0.12),transparent_28%),radial-gradient(circle_at_top_right,rgba(16,35,61,0.08),transparent_26%)]" />
           <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6 md:py-24">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(47,111,237,0.14)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary-blue)] shadow-[0_14px_28px_rgba(16,35,61,0.06)]">
-                <Sparkles className="h-4 w-4" />
-                {content.hero.badge}
-              </div>
-
-              <h1 className="mt-6 max-w-2xl text-4xl font-semibold tracking-[-0.035em] text-[var(--color-foreground-dark)] md:text-6xl md:leading-[1.02]">
+              <h1 className="max-w-2xl text-4xl font-semibold tracking-[-0.035em] text-[var(--color-foreground-dark)] md:text-6xl md:leading-[1.02]">
                 {content.hero.headline}
               </h1>
 
@@ -452,14 +441,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
       <footer id="contact" className="border-t border-white/8 bg-[var(--color-deep-navy)] text-white">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 md:px-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" alt={content.brand.name} className="h-11 w-auto" />
-              <div>
-                <p className="text-sm font-semibold tracking-[0.06em] text-white">{content.brand.name}</p>
-                <p className="text-xs text-white/55">Automation audit for SMBs</p>
-              </div>
-            </div>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">{content.footer.description}</p>
+            <p className="max-w-2xl text-sm leading-7 text-white/65">{content.footer.description}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
