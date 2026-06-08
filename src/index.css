@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,19 +7,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Montserrat", sans-serif;
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Geist Variable", ui-sans-serif, sans-serif;
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
   --color-slate-900: #111827;
   --color-primary-gradient: linear-gradient(to right, #2F6FED, #5B8CFF);
 
   /* Blue corporate design tokens */
   --color-primary-blue: #2F6FED;
-  --color-primary-blue-soft: #DCE9FF;
+  --color-primary-blue-soft: #D7E5FF;
   --color-deep-navy: #10233D;
-  --color-soft-blue: #EEF5FF;
+  --color-soft-blue: #F3F7FD;
   --color-foreground-dark: #0C1D33;
-  --color-muted-body: #5E6D82;
+  --color-muted-body: #536174;
 
   @keyframes shiny-text {
     0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
@@ -69,7 +69,7 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 @theme inline {
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-display);
   --font-sans: 'Geist Variable', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
