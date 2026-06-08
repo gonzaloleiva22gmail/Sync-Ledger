@@ -201,14 +201,14 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section id="deliverables" className="section-padding border-t border-[rgba(16,35,61,0.06)] bg-white">
+        <section id="deliverables" className="section-padding border-t border-[rgba(16,35,61,0.06)] bg-[radial-gradient(circle_at_top_left,rgba(47,111,237,0.05),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
           <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="max-w-xl">
               <p className={eyebrowClass}>{content.deliverables.eyebrow}</p>
               <h2 className={`mt-4 ${sectionHeadingClass}`}>{content.deliverables.heading}</h2>
               <p className={`mt-4 ${bodyCopyClass}`}>{content.deliverables.subheading}</p>
 
-              <div className="mt-8 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[rgba(47,111,237,0.04)] px-5 py-5">
+              <div className="mt-8 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(135deg,rgba(47,111,237,0.08)_0%,rgba(255,255,255,0.92)_100%)] px-5 py-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-foreground-dark)]">
                   <Star className="h-4 w-4 text-[var(--color-primary-blue)]" />
                   Why it matters
@@ -223,7 +223,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               {content.deliverables.items.map((item, index) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white px-5 py-5 shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
+                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)] px-5 py-5 shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(47,111,237,0.08)] text-sm font-semibold text-[var(--color-primary-blue)]">
@@ -237,7 +237,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                 </div>
               ))}
 
-              <div className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-5">
+              <div className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(135deg,rgba(255,255,255,1)_0%,rgba(243,247,253,0.92)_100%)] px-5 py-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-foreground-dark)]">
                   <ShieldCheck className="h-4 w-4 text-[var(--color-primary-blue)]" />
                   Readable and practical
@@ -286,7 +286,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section id="review" className="section-padding bg-white">
+        <section id="review" className="section-padding bg-[radial-gradient(circle_at_top,rgba(47,111,237,0.05),transparent_26%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <p className={eyebrowClass}>{content.whatWeReview.eyebrow}</p>
@@ -300,7 +300,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               {content.whatWeReview.cards.map((card, index) => (
                 <article
                   key={card.name}
-                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-6 py-6 shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
+                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[radial-gradient(circle_at_top_right,rgba(47,111,237,0.06),transparent_30%),linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-6 py-6 shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
                 >
                   <div className="flex items-center gap-3 text-sm font-semibold text-[var(--color-primary-blue)]">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(47,111,237,0.08)]">
@@ -317,7 +317,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section id="process" className="section-padding bg-[var(--color-soft-blue)]">
+        <section id="process" className="section-padding bg-[radial-gradient(circle_at_top_left,rgba(47,111,237,0.08),transparent_24%),linear-gradient(180deg,#eef4fd_0%,#f5f8fd_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className={sectionHeadingClass}>A simple path to the first improvement</h2>
@@ -328,7 +328,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
               {content.howItWorks.steps.map((step) => (
                 <div
                   key={step.step}
-                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white px-6 py-8 text-center shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
+                  className="rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)] px-6 py-8 text-center shadow-[0_12px_24px_rgba(16,35,61,0.04)]"
                 >
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-primary-blue)] text-lg font-semibold text-white shadow-[0_16px_30px_rgba(47,111,237,0.2)]">
                     {step.step}
@@ -351,7 +351,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-[radial-gradient(circle_at_bottom_right,rgba(47,111,237,0.05),transparent_24%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
               <div className="max-w-xl">
@@ -369,7 +369,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
                 {content.opportunities.items.map((item, index) => (
                   <div
                     key={item.name}
-                    className="flex items-start gap-4 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)] px-5 py-5"
+                    className="flex items-start gap-4 rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[radial-gradient(circle_at_top_right,rgba(47,111,237,0.05),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbfe_100%)] px-5 py-5"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(47,111,237,0.08)] text-sm font-semibold text-[var(--color-primary-blue)]">
                       {index + 1}
@@ -382,14 +382,14 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section id="faq" className="section-padding bg-[var(--color-soft-blue)]">
+        <section id="faq" className="section-padding bg-[radial-gradient(circle_at_top,rgba(47,111,237,0.06),transparent_22%),linear-gradient(180deg,#f1f6fd_0%,#eef4fb_100%)]">
           <div className="mx-auto w-full max-w-5xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className={sectionHeadingClass}>Frequently asked questions</h2>
               <p className={`mt-4 ${bodyCopyClass}`}>{content.faq.subheading}</p>
             </div>
 
-            <div className="mt-12 overflow-hidden rounded-2xl border border-[rgba(16,35,61,0.08)] bg-white shadow-[0_12px_24px_rgba(16,35,61,0.04)]">
+            <div className="mt-12 overflow-hidden rounded-2xl border border-[rgba(16,35,61,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] shadow-[0_12px_24px_rgba(16,35,61,0.04)]">
               {content.faq.items.map((item) => (
                 <div
                   key={item.title}
@@ -408,7 +408,7 @@ const LandingPage = ({ content, onNavigate }: LandingPageProps) => {
           </div>
         </section>
 
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-[linear-gradient(180deg,#ffffff_0%,#f7f9fd_100%)]">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
             <div className="overflow-hidden rounded-3xl bg-[linear-gradient(135deg,var(--color-deep-navy)_0%,#17345d_48%,#2155c7_100%)] px-6 py-10 text-white md:px-10 md:py-12">
               <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
